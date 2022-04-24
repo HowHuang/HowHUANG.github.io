@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>xarray_time | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="I have failed to convert datetime format from ‘float’ (such as 199601) to ‘datetime64’ when input multiple nc. files by using the stupid xr.open_mfdat">
+  
+  
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">Hexo</a>
+  </h1>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-xarray-time" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2022-04-24T02:32:57.000Z" itemprop="datePublished">2022-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      xarray_time
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>I have failed to convert datetime format from ‘float’ (such as 199601) to ‘datetime64’ when input multiple nc. files by using the stupid <code>xr.open_mfdataset</code> .My solution: Here, the DataArray taken as an example is dataset[‘time’].There are three functions I tried to used.</p>
+<ol>
+<li>using <code>datetime.strptime(dataset['time'],'%Y-%m')</code> after <code>from datetime import datetime</code>, but I got the Error: strptime() argument 1 must be str, not DataArray. This indicated the dataset[‘time’] is not the valid input.</li>
+<li>using <code>pd.to_datetime(dataset['time'], format='%Y%m')</code> after <code>import pandas as pd</code>, but the Error of unhashable type: ‘DataArray’ will follow, which also indicated the dataset[‘time’] is not the valid input.</li>
+<li>using <code>dataset['time'].astype('datetime64[ns]')</code> which also from pandas. It works, but the output is not what I want. For example, you will directly get the stupid things like ‘1970-01-01T00:00:00.000199601’ from ‘199601’. However, any ‘datetime64[]’ could not give the correct years and months back to you. So, I tried to use <code>.values</code><br>
+to return the values from dataset[‘time’]. However, using <code>dataset['time'].astype(int).astype('str').values.astype('datetime64[Y]')</code> can only return the ‘199601’, which mean the year of 199601 I guessed.</li>
+</ol>
+<p>However, I finally took the <code>.values</code> back to 2)., which means using <code>pd.to``_datetime(dataset['time'].values, format='%Y%m')</code> , I got the things like ‘1996-01-01T00:00:00.000000000’, which is exactly what I want.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>
