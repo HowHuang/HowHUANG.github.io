@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>parellel_computing_v1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <meta name="description" content="Parallelizing a for loop with pool() and map()
+for loops are one of the most common things that we want to parallelize (https://zhu-group.github.io/es">
   
   
-  <link rel="stylesheet" href="css/style.css">
   
-    <link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css">
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
   
 <meta name="generator" content="Hexo 6.1.0"></head>
 
@@ -22,9 +25,9 @@
   <nav id="main-nav" class="outer">
     <a id="main-nav-toggle" class="nav-icon"></a>
     
-      <a class="main-nav-link" href="index.html">Home</a>
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
     
-      <a class="main-nav-link" href="/archives">Archives</a>
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
     
     <div class="main-nav-space-between"></div>
     
@@ -32,17 +35,15 @@
 </div>
 <div id="header-title">
   <h1 id="logo-wrap">
-    <a href="index.html" id="logo">Hexo</a>
+    <a href="../../../../index.html" id="logo">Hexo</a>
   </h1>
   
 </div>
 
       <div id="content" class="outer">
-        <section id="main">
-  
-    <article id="post-parellel-computing-v1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-parellel-computing-v1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/04/24/parellel-computing-v1/" class="article-date">
+    <a href="" class="article-date">
   <time class="dt-published" datetime="2022-04-24T06:46:31.000Z" itemprop="datePublished">2022-04-24</time>
 </a>
     
@@ -53,8 +54,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/04/24/parellel-computing-v1/">parellel_computing_v1</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      parellel_computing_v1
     </h1>
   
 
@@ -104,120 +105,28 @@ Or you can use <code>new_calculation = partial(calculation, parameter1, paramete
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/python/" rel="tag">python</a></li></ul>
 
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hexo-errors" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="2022/04/24/hexo-errors/" class="article-date">
-  <time class="dt-published" datetime="2022-04-24T03:32:43.000Z" itemprop="datePublished">2022-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+  
+    <a href="../hexo-errors/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/04/24/hexo-errors/">hexo_errors</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h5 id="error:-permission denied (publickey) fatal: could not read from remote repository.">Error: Permission denied (publickey). fatal: Could not read from remote repository.</h5>
-<p>refer to <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/1478">https://github.com/hexojs/hexo/issues/1478</a></p>
-<div class="highlight"><pre class="code"><code>(base) xxxx@xxxx:xxxx ⍉ ➜ cat INKon
-<span class="hljs-comment">#!/bin/bash</span>
-
-sudo hexo clean
-sudo hexo g
-hexo d
-
-<span class="hljs-comment">#EOF</span>
-</code></pre></div>
-<p>using <code>hexo d</code> instead of <code>sudo hexo d</code></p>
-<h5 id="warning:-accessing non-existent property 'column' of module exports inside circular dependency">Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency</h5>
-<p>refer to <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/397813964">https://zhuanlan.zhihu.com/p/397813964</a>, need to update hexo-renderer-stylus:</p>
-<div class="highlight"><pre class="code"><code>npm install hexo-renderer-stylus
-</code></pre></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/hexo/" rel="tag">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-xarray-time" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="2022/04/24/xarray-time/" class="article-date">
-  <time class="dt-published" datetime="2022-04-24T02:32:57.000Z" itemprop="datePublished">2022-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          hexo_errors
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/04/24/xarray-time/">xarray_time</a>
-    </h1>
-  
+</nav>
 
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>I have failed to convert datetime format from ‘float’ (such as 199601) to ‘datetime64’ when input multiple nc. files by using the stupid <code>xr.open_mfdataset</code> .My solution: Here, the DataArray taken as an example is dataset[‘time’].There are three functions I tried to used.</p>
-<ol>
-<li>using <code>datetime.strptime(dataset['time'],'%Y-%m')</code> after <code>from datetime import datetime</code>, but I got the Error: strptime() argument 1 must be str, not DataArray. This indicated the dataset[‘time’] is not the valid input.</li>
-<li>using <code>pd.to_datetime(dataset['time'], format='%Y%m')</code> after <code>import pandas as pd</code>, but the Error of unhashable type: ‘DataArray’ will follow, which also indicated the dataset[‘time’] is not the valid input.</li>
-<li>using <code>dataset['time'].astype('datetime64[ns]')</code> which also from pandas. It works, but the output is not what I want. For example, you will directly get the stupid things like ‘1970-01-01T00:00:00.000199601’ from ‘199601’. However, any ‘datetime64[]’ could not give the correct years and months back to you. So, I tried to use <code>.values</code><br>
-to return the values from dataset[‘time’]. However, using <code>dataset['time'].astype(int).astype('str').values.astype('datetime64[Y]')</code> can only return the ‘199601’, which mean the year of 199601 I guessed.</li>
-</ol>
-<p>However, I finally took the <code>.values</code> back to 2)., which means using <code>pd.to_datetime(dataset['time'].values, format='%Y%m')</code> , I got the things like ‘1996-01-01T00:00:00.000000000’, which is exactly what I want.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/python/" rel="tag">python</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
@@ -238,20 +147,20 @@ to return the values from dataset[‘time’]. However, using <code>dataset['tim
     </div>
     <nav id="mobile-nav">
   
-    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
-<script src="js/clipboard.min.js"></script>
-<script src="js/jquery-1.4.3.min.js"></script>
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
 
-<script src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 
 
-<script src="js/script.js"></script>
+<script src="../../../../js/script.js"></script>
 
 
 
@@ -278,7 +187,7 @@ to return the values from dataset[‘time’]. However, using <code>dataset['tim
   });
   </script> -->
 <script type="text/javascript" id="MathJax-script" async
-  src="mathjax/tex-chtml.js">
+  src="../../../../mathjax/tex-chtml.js">
 </script>
 <!-- <script type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
