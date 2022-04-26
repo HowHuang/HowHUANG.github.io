@@ -1,200 +1,359 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>parellel_computing_v1 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <meta name="description" content="Parallelizing a for loop with pool() and map()
-for loops are one of the most common things that we want to parallelize (https://zhu-group.github.io/es">
-  
-  
-  
-  <link rel="stylesheet" href="../../../../css/style.css">
-  
-    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hao HUANG">
+    
+    <title>
+        
+            parellel_computing_v1 |
+        
+        Haha
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <div id="nav-outer">
-  <nav id="main-nav" class="outer">
-    <a id="main-nav-toggle" class="nav-icon"></a>
+<div class="progress-bar-container">
     
-      <a class="main-nav-link" href="../../../../index.html">Home</a>
+
     
-      <a class="main-nav-link" href="../../../../archives">Archives</a>
-    
-    <div class="main-nav-space-between"></div>
-    
-  </nav>
-</div>
-<div id="header-title">
-  <h1 id="logo-wrap">
-    <a href="../../../../index.html" id="logo">Hexo</a>
-  </h1>
-  
 </div>
 
-      <div id="content" class="outer">
-        <section id="main"><article id="post-parellel-computing-v1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="" class="article-date">
-  <time class="dt-published" datetime="2022-04-24T06:46:31.000Z" itemprop="datePublished">2022-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      parellel_computing_v1
-    </h1>
-  
 
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h5 id="parallelizing-a `for` loop with `pool()` and `map()`">Parallelizing a <code>for</code> loop with <code>pool()</code> and <code>map()</code></h5>
-<p><code>for</code> loops are one of the most common things that we want to parallelize (<a target="_blank" rel="noopener" href="https://zhu-group.github.io/ese5023/Section_10.html">https://zhu-group.github.io/ese5023/Section_10.html</a>). To do that, I have known two kinds of <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>decorators<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span>: <code>dask.delayed()</code> and <code>multiprocessing.pool()</code>.</p>
-<h5 id="what-is `daskdelayed()`">What is <code>dask.delayed()</code></h5>
-<p>You can see how it works and how to use it by reading this detailed tutorial (<a target="_blank" rel="noopener" href="https://tutorial.dask.org/01_dask.delayed.html">https://tutorial.dask.org/01_dask.delayed.html</a>). Briefly, using <code>dask.delayed</code> function to make the faster function not be called actually, delaying for other slower functions, using <code>.compute()</code> and <code>.visualize()</code> to get the final results and the task graph.</p>
-<h5 id="what-is the differences between these two functions">What is the differences between these two functions</h5>
-<p>Here is a thorough explanation (<a target="_blank" rel="noopener" href="https://github.com/dask/dask/issues/1783">https://github.com/dask/dask/issues/1783</a>). Briefly, <code>dask</code> ends up serializing the data for every argument, since they are all called separately, which is why it can eat up processing time. In contrast, <code>pool.map</code> splits the input data into batches, which can be more efficient than sending single elements (but not this much more efficient). This means you are still serializing the data to each worker process once under <code>multiprocessing</code>. So, the link suggested let <code>dask</code> do the data loading. Because when you do that, you’re not sending large chunks of data around, and also allows <code>dask</code> to minimize memory usage, as you’re not loading everything into memory at once.</p>
-<h5 id="how-to use `pool()` and `map()`">How to use <code>pool()</code> and <code>map()</code></h5>
-<p>Before using this method, you need to the differences between multiprocessing and multithreading, and decide to use which system to calculate. Briefly, there is benefit to using the multiprocessing system for CPU intensive processes and the multithreading system when many scripts related to network/data I/O spend the majority of their time waiting for data from a remote source ( <a target="_blank" rel="noopener" href="https://chriskiehl.com/article/parallelism-in-one-line">https://chriskiehl.com/article/parallelism-in-one-line</a>).</p>
-<h6 id="besides,-what is `map()`? i think it is an another expression of functionnow, suppose that i have a function `calculation(parameter1)`">Besides, what is <code>map()</code>? I think it is an another expression of function.Now, suppose that I have a function <code>calculation(parameter1)</code></h6>
-<h6 id="for-multiprocessing,">For multiprocessing,</h6>
-<div class="highlight"><pre class="code"><code><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool
-parameter1 = list(range(<span class="hljs-number">0</span>, <span class="hljs-number">66</span>)) ## keep the parameter1 <span class="hljs-keyword">as</span> a list <span class="hljs-keyword">to</span> <span class="hljs-keyword">input</span>
-pool = Pool() ## <span class="hljs-keyword">if</span> pool = Pool(<span class="hljs-number">4</span>), <span class="hljs-number">4</span> cpu processes will be used. <span class="hljs-keyword">if</span> <span class="hljs-keyword">no</span> number, <span class="hljs-keyword">all</span> cpu will be <span class="hljs-keyword">called</span>
-pool.map(calculation, parameter1) 
-# <span class="hljs-keyword">Do</span> <span class="hljs-keyword">not</span> forget the <span class="hljs-keyword">following</span> two <span class="hljs-keyword">functions</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">close</span> the pool <span class="hljs-keyword">and</span> wait <span class="hljs-keyword">for</span> the <span class="hljs-keyword">work</span> <span class="hljs-keyword">to</span> finish
-pool.<span class="hljs-keyword">close</span>() 
-pool.<span class="hljs-keyword">join</span>()
-</code></pre></div>
-<h6 id="for-multithreading,">For multithreading,</h6>
-<div class="highlight"><pre class="code"><code><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool
-<span class="hljs-keyword">from</span> multiprocessing.dummy <span class="hljs-keyword">import</span> Pool <span class="hljs-keyword">as</span> ThreadPool
-parameter1 = list(range(<span class="hljs-number">0</span>, <span class="hljs-number">66</span>)) ## keep the parameter1 <span class="hljs-keyword">as</span> a list <span class="hljs-keyword">to</span> <span class="hljs-keyword">input</span>
-pool = ThreadPool() ## <span class="hljs-keyword">if</span> pool = ThreadPool(<span class="hljs-number">4</span>), <span class="hljs-number">4</span> threads will be used. <span class="hljs-keyword">if</span> <span class="hljs-keyword">no</span> number, <span class="hljs-keyword">all</span> threads will be <span class="hljs-keyword">called</span>
-pool.map(calculation, parameter1) 
-# <span class="hljs-keyword">Do</span> <span class="hljs-keyword">not</span> forget the <span class="hljs-keyword">following</span> two <span class="hljs-keyword">functions</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">close</span> the pool <span class="hljs-keyword">and</span> wait <span class="hljs-keyword">for</span> the <span class="hljs-keyword">work</span> <span class="hljs-keyword">to</span> finish
-pool.<span class="hljs-keyword">close</span>() 
-pool.<span class="hljs-keyword">join</span>()
-</code></pre></div>
-<h6 id="what-about more parameters?">What about more parameters?</h6>
-<p>To do that. You can use <code>.map(calculation, parameter1, parameter2, ....) </code><br>
-where you need to keep all parameters’ lists have same length.<br>
-Or you can use <code>list(itertools.product(parameter1, parameter2))</code> to create a list with two pair of parameters (<a target="_blank" rel="noopener" href="https://docs.python.org/2/library/itertools.html#itertools.product">https://docs.python.org/2/library/itertools.html#itertools.product</a>).<br>
-Or you can use <code>new_calculation = partial(calculation, parameter1, parameter2 = 'A', parameter3 = 'B')</code> and <code>parameter1 = list(range(0, 66))</code> to get a new function that keep parameter1 change but the parameter2 = ‘A’ and parameter3 = ‘B’. Then<br>
-<code>pool.map(calculation, parameter1)</code></p>
+<main class="page-container">
 
-      
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Haha
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/python/" rel="tag">python</a></li></ul>
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="../hexo-errors/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">
-        
-          hexo_errors
-        
-      </div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
-      
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
     </div>
-  </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">parellel_computing_v1</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Hao HUANG</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-24 14:46:31</span>
+        <span class="mobile">2022-04-24 14:46</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="parallelizing-a `for` loop with `pool()` and `map()`">Parallelizing a <code>for</code> loop with <code>pool()</code> and <code>map()</code></h4>
+<p><code>for</code> loops are one of the most common things that we want to parallelize (<a class="link"   target="_blank" rel="noopener" href="https://zhu-group.github.io/ese5023/Section_10.html" >https://zhu-group.github.io/ese5023/Section_10.html<i class="fas fa-external-link-alt"></i></a>). To do that, I have known two kinds of “decorators”: <code>dask.delayed()</code> and <code>multiprocessing.pool()</code>.</p>
+<h4 id="what-is `daskdelayed()`">What is <code>dask.delayed()</code></h4>
+<p>You can see how it works and how to use it by reading this detailed tutorial (<a class="link"   target="_blank" rel="noopener" href="https://tutorial.dask.org/01_dask.delayed.html" >https://tutorial.dask.org/01_dask.delayed.html<i class="fas fa-external-link-alt"></i></a>). Briefly, using <code>dask.delayed</code> function to make the faster function not be called actually, delaying for other slower functions, using <code>.compute()</code> and <code>.visualize()</code> to get the final results and the task graph.</p>
+<h4 id="what-is the differences between these two functions">What is the differences between these two functions</h4>
+<p>Here is a thorough explanation (<a class="link"   target="_blank" rel="noopener" href="https://github.com/dask/dask/issues/1783" >https://github.com/dask/dask/issues/1783<i class="fas fa-external-link-alt"></i></a>). Briefly, <code>dask</code> ends up serializing the data for every argument, since they are all called separately, which is why it can eat up processing time. In contrast, <code>pool.map</code> splits the input data into batches, which can be more efficient than sending single elements (but not this much more efficient). This means you are still serializing the data to each worker process once under <code>multiprocessing</code>. So, the link suggested let <code>dask</code> do the data loading. Because when you do that, you’re not sending large chunks of data around, and also allows <code>dask</code> to minimize memory usage, as you’re not loading everything into memory at once.</p>
+<h4 id="how-to use `pool()` and `map()`">How to use <code>pool()</code> and <code>map()</code></h4>
+<p>Before using this method, you need to the differences between multiprocessing and multithreading, and decide to use which system to calculate. Briefly, there is benefit to using the multiprocessing system for CPU intensive processes and the multithreading system when many scripts related to network/data I/O spend the majority of their time waiting for data from a remote source ( <a class="link"   target="_blank" rel="noopener" href="https://chriskiehl.com/article/parallelism-in-one-line" >https://chriskiehl.com/article/parallelism-in-one-line<i class="fas fa-external-link-alt"></i></a>).</p>
+<h5 id="besides,-what is `map()`? i think it is an another expression of functionnow, suppose that i have a function `calculation(parameter1)`">Besides, what is <code>map()</code>? I think it is an another expression of function.Now, suppose that I have a function <code>calculation(parameter1)</code></h5>
+<h5 id="for-multiprocessing,">For multiprocessing,</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool</span><br><span class="line">parameter1 = list(range(0, 66)) ## keep the parameter1 as a list to input</span><br><span class="line">pool = Pool() ## if pool = Pool(4), 4 cpu processes will be used. if no number, all cpu will be called</span><br><span class="line">pool.map(calculation, parameter1) </span><br><span class="line"># Do not forget the following two functions to close the pool and wait for the work to finish</span><br><span class="line">pool.close() </span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+<h5 id="for-multithreading,">For multithreading,</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool</span><br><span class="line">from multiprocessing.dummy import Pool as ThreadPool</span><br><span class="line">parameter1 = list(range(0, 66)) ## keep the parameter1 as a list to input</span><br><span class="line">pool = ThreadPool() ## if pool = ThreadPool(4), 4 threads will be used. if no number, all threads will be called</span><br><span class="line">pool.map(calculation, parameter1) </span><br><span class="line"># Do not forget the following two functions to close the pool and wait for the work to finish</span><br><span class="line">pool.close() </span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+<h5 id="what-about more parameters?">What about more parameters?</h5>
+<ol>
+<li>Using <code>.map(calculation, parameter1, parameter2, ....) </code>, where you need to keep all parameters’ lists have same length.</li>
+<li>Using  <code>list(itertools.product(parameter1, parameter2))</code> to create a list with two pair of parameters (<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/2/library/itertools.html#itertools.product" >https://docs.python.org/2/library/itertools.html#itertools.product<i class="fas fa-external-link-alt"></i></a>).</li>
+<li>Using <code>new_calculation = partial(calculation, parameter1, parameter2 = 'A', parameter3 = 'B')</code> and <code>parameter1 = list(range(0, 66))</code> to get a new function that keep parameter1 change but the parameter2 = ‘A’ and parameter3 = ‘B’. Then<br>
+<code>pool.map(calculation, parameter1)</code></li>
+</ol>
+<h4 id="what-are the meanings of `close()` and `.join()`">What are the meanings of <code>.close()</code> and <code>.join()</code></h4>
+<p>pending to understand</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/budong282712018/article/details/79958592?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.pc_relevant_default&amp;utm_relevant_index=2" >https://blog.csdn.net/budong282712018/article/details/79958592?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&amp;utm_relevant_index=2<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/xiongzaiabc/article/details/81019605" >https://blog.csdn.net/xiongzaiabc/article/details/81019605<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/24/hexo-errors/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">hexo_errors</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Hao HUANG</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
 </footer>
 
+        </div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
-  
-    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
-<script src="../../../../js/clipboard.min.js"></script>
-<script src="../../../../js/jquery-1.4.3.min.js"></script>
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
-<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
-<script src="../../../../js/script.js"></script>
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
 
 
 
 
 
 
-<script>
-  MathJax = {
-    options: {
-      enableMenu: false
-    },
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-    }
-  };
-</script>
-<!-- <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-    CommonHTML: {
-      linebreaks: false
-    }
-  });
-  </script> -->
-<script type="text/javascript" id="MathJax-script" async
-  src="../../../../mathjax/tex-chtml.js">
-</script>
-<!-- <script type="text/javascript"
-   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
-</script> -->
+
+
+<div class="post-scripts">
+    
+</div>
 
 
 
-  </div>
 </body>
 </html>
