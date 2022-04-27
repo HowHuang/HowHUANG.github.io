@@ -204,7 +204,7 @@ code {
   padding: 5px;
   word-wrap: break-word;
   border-radius: 2px;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   color: var(--code-foreground);
   background: var(--code-background);
 }

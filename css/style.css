@@ -512,7 +512,7 @@ button {
   transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
   transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.2s, 0.2s;
   transition-timing-function: ease, ease, ease, ease, linear, linear;
-  margin: 10px 0 2px;
+  margin: 10px auto 2px;
 }
 .markdown-body > table {
   border-spacing: 0;
@@ -745,7 +745,7 @@ code {
   padding: 5px;
   word-wrap: break-word;
   border-radius: 2px;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   color: var(--code-foreground);
   background: var(--code-background);
 }
@@ -2267,7 +2267,7 @@ pre .javascript .function {
   width: 100%;
   box-sizing: border-box;
   padding: 10px 6px;
-  font-size: 1rem;
+  font-size: 0.88rem;
   background: var(--second-background-color);
 }
 .article-copyright-info-container::after {
@@ -2560,9 +2560,9 @@ pre .javascript .function {
 }
 .article-content-container .post-tags-box {
   display: none;
-  margin-top: 1.6rem;
+  margin-top: 1.2rem;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 @media (max-width: 780px) {
   .article-content-container .post-tags-box {
