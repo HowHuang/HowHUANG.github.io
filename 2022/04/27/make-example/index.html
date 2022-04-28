@@ -182,7 +182,7 @@
 
         <div class="article-content markdown-body">
             <h4 id="makefile-writing example">Makefile writing example</h4>
-<p>Revision of class MAE5032-HPC-by_Ju-LIU (<a class="link" target="_blank" rel="noopener" href="https://ju-liu.github.io/">https://ju-liu.github.io/<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>Revision of class MAE5032-HPC-by_Ju-LIU (<a class="link"   target="_blank" rel="noopener" href="https://ju-liu.github.io/" >https://ju-liu.github.io/<i class="fas fa-external-link-alt"></i></a>)</p>
 <h5 id="version-1">Version 1</h5>
 <p>把目标文件<code>bar.o</code>和依赖文件<code>bar.c</code>、<code>bar.h</code>连接起来</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">foo: foo.o bar.o</span></span><br><span class="line">	gcc -o foo foo.o bar.o</span><br><span class="line"><span class="section">foo.o: foo.c bar.h</span></span><br><span class="line">	gcc -c foo.c</span><br><span class="line"><span class="section">bar.o: bar.c bar.h</span></span><br><span class="line">	gcc -c bar.c</span><br></pre></td></tr></table></figure>
