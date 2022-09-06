@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hao HUANG">
+    
+    <title>
+        
+            Conda installation for cudf xgboost-gpu |
+        
+        Haha
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_me.jpeg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/logo_me.jpeg","favicon":"/images/logo_me.jpeg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Haha
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Conda installation for cudf xgboost-gpu</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/logo_me.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Hao HUANG</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-05-24 08:52:57</span>
+        <span class="mobile">2022-05-24 08:52</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>When I wanted to install cudf in my old conda environment (this env only had installed necessary package like py-xgboost-gpu), it failed with system conflict error:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__glibc[version=<span class="string">&#x27;&gt;=2.17|&gt;=2.17,&lt;3.0.a0&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Your installed version is: 2.27</span><br></pre></td></tr></table></figure>
+<p>The machine was installed cuda-11.7 (I thought I had updated the version of cuda because I met another issue before, but I forgot what is the issue). Based on, the <a class="link"   target="_blank" rel="noopener" href="https://github.com/rapidsai/cudf" >official document<i class="fas fa-external-link-alt"></i></a> recommends</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -c rapidsai -c nvidia -c numba -c conda-forge \</span><br><span class="line">    cudf=21.08 python=3.7 cudatoolkit=11.0</span><br></pre></td></tr></table></figure>
+<p>I did three kinds of tries according to searching results:</p>
+<h3 id="remove-miniconda thoroughly and install anaconda">Remove miniconda thoroughly and install anaconda</h3>
+<p>(both of them were of a lateset version)</p>
+<p>ref. <a class="link"   target="_blank" rel="noopener" href="https://github.com/rapidsai/cudf/issues/8414" >https://github.com/rapidsai/cudf/issues/8414<i class="fas fa-external-link-alt"></i></a></p>
+<p>This try could not fix the conflict.</p>
+<h3 id="~~update-the version of glibc from gnu~~"><s>Update the version of glibc from GNU</s></h3>
+<ol>
+<li>The software versions are listed in <a class="link"   target="_blank" rel="noopener" href="https://ftp.gnu.org/gnu/glibc/" >https://ftp.gnu.org/gnu/glibc/<i class="fas fa-external-link-alt"></i></a> (I chose 2.35)</li>
+<li>Take an out-of-source build</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../glibc-2.35/configure --prefix=/opt/glibc-2.35 //the prefix was recommended by GNU</span><br><span class="line">sudo make -j</span><br><span class="line">sudo make install //needed permission <span class="keyword">for</span> some directories</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/opt/glibc-2.35/lib //added it <span class="keyword">in</span> the bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>(bashrc for non-loginshell，and profile for login shell)</p>
+<p><strong>Updating glibc is highly risky since it is a very central package.</strong></p>
+<p><strong>Moreover, by default, the highest version of GLIBC for Ubuntu 18.04 should 2.27. You have two options to continue (<a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/questions/how-install-glibc-2-29-or-higher-in-ubuntu-18-04" >ref.<i class="fas fa-external-link-alt"></i></a>)</strong></p>
+<h3 id="restrict-the version fo cudf">Restrict the version fo cudf</h3>
+<ol>
+<li>
+<p>create a new environment of python=3.7</p>
+</li>
+<li>
+<p><code>conda install -c nvidia -c rapidsai -c numba -c conda-forge -c defaults cudf=0.6</code></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1425421#:~:text=cuDF%20%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%20PyPi%20%E5%AE%89%E8%A3%85%E3%80%82%20%23%20for%20CUDA%209.2,%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%20cuDF%EF%BC%8C%E5%B9%B6%E4%B8%94%20Python%20%E7%9A%84%E7%89%88%E6%9C%AC%E5%BF%85%E9%A1%BB%E6%98%AF%203.6%20%E6%88%96%203.7%20%E7%89%88%E6%9C%AC%E3%80%82" >(Inspired from this link)<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ol>
+<p>![截屏2022-05-24 08.50.29](/Users/haohuang/Documents/22_ink/source/_posts/Installation-of-cudf-by-conda/fig1 2022-05-24 08.50.29.png)</p>
+<h5 id="after-installing cudf,">After installing cudf,</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge py-xgboost-gpu</span><br></pre></td></tr></table></figure>
+<p>![截屏2022-05-24 09.11.04](/Users/haohuang/Documents/22_ink/source/_posts/Installation-of-cudf-by-conda/fig2 2022-05-24 09.11.04.png)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge jupyterlab</span><br><span class="line">conda install -c conda-forge matplotlib</span><br><span class="line">conda install -c conda-forge dask</span><br><span class="line">conda install dask_kubernetes -c conda-forge</span><br><span class="line">conda install -c conda-forge dask-ml=1.9</span><br><span class="line">pip install xgboost==1.3.3</span><br><span class="line">conda install -c rapidsai dask-cuda=0.19</span><br><span class="line"></span><br><span class="line"><span class="comment">##not sure</span></span><br><span class="line">conda install -c conda-forge -c rapidsai ucx-proc=*=gpu ucx ucx-py</span><br><span class="line">conda upgrade dask</span><br></pre></td></tr></table></figure>
+<p>when imort</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(base) dell@dell-PowerEdge-T640:/usr/local/cuda/lib64$ ll |grep libcudart</span><br><span class="line">lrwxrwxrwx 1 root root        17 Apr 23 10:00 libcudart.so -&gt; libcudart.so.11.0</span><br><span class="line">lrwxrwxrwx 1 root root        20 Apr 23 10:00 libcudart.so.11.0 -&gt; libcudart.so.11.7.60</span><br><span class="line">-rw-r--r-- 1 root root    671072 Apr 23 10:00 libcudart.so.11.7.60</span><br><span class="line">-rw-r--r-- 1 root root   1178522 Apr 23 10:00 libcudart_static.a</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(sanctuary) dell@dell-PowerEdge-T640:/usr/local/cuda-11/lib64$ conda search cuda</span><br><span class="line">Loading channels: <span class="keyword">done</span></span><br><span class="line">No match found <span class="keyword">for</span>: cuda. Search: *cuda*</span><br><span class="line"><span class="comment"># Name                       Version           Build  Channel</span></span><br><span class="line">cudatoolkit                      9.0      h13b8566_0  pkgs/main</span><br><span class="line">cudatoolkit                      9.2               0  pkgs/main</span><br><span class="line">cudatoolkit                 10.0.130               0  pkgs/main</span><br><span class="line">cudatoolkit                 10.1.168               0  pkgs/main</span><br><span class="line">cudatoolkit                 10.1.243      h6bb024c_0  pkgs/main</span><br><span class="line">cudatoolkit                  10.2.89      hfd86e86_0  pkgs/main</span><br><span class="line">cudatoolkit                  10.2.89      hfd86e86_1  pkgs/main</span><br><span class="line">cudatoolkit                 11.0.221      h6bb024c_0  pkgs/main</span><br><span class="line">cudatoolkit                   11.3.1      h2bc3f7f_2  pkgs/main</span><br><span class="line">(sanctuary) dell@dell-PowerEdge-T640:/usr/local/cuda-11/lib64$ conda list cudatoolkit</span><br><span class="line"><span class="comment"># packages in environment at /home/dell/anaconda3/envs/sanctuary:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name                    Version                   Build  Channel</span></span><br><span class="line">cudatoolkit               11.7.0              hd8887f6_10    conda-forge</span><br><span class="line">(sanctuary) dell@dell-PowerEdge-T640:/usr/local/cuda-11/lib64$ conda install cudatoolkit=9.2</span><br></pre></td></tr></table></figure>
+<p>![截屏2022-05-24 10.05.25](/Users/haohuang/Documents/22_ink/source/_posts/Installation-of-cudf-by-conda/fig3 2022-05-24 10.05.25.png)</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-92-download-archive?target_os=Linux&amp;target_arch=x86_64" >https://developer.nvidia.com/cuda-92-download-archive?target_os=Linux&amp;target_arch=x86_64<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="numba">numba</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(sanctuary) dell@dell-PowerEdge-T640:~$ python</span><br><span class="line">Python <span class="number">3.7</span><span class="number">.13</span> (default, Mar <span class="number">29</span> <span class="number">2022</span>, 02:<span class="number">18</span>:<span class="number">16</span>)</span><br><span class="line">[GCC <span class="number">7.5</span><span class="number">.0</span>] :: Anaconda, Inc. on linux</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> <span class="keyword">or</span> <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> cudf</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/sanctuary/lib/python3.7/site-packages/cudf/__init__.py&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf <span class="keyword">import</span> dataframe</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/sanctuary/lib/python3.7/site-packages/cudf/dataframe/__init__.py&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf.dataframe <span class="keyword">import</span> (buffer, dataframe, series,</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/sanctuary/lib/python3.7/site-packages/cudf/dataframe/buffer.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf.utils <span class="keyword">import</span> cudautils, utils</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/sanctuary/lib/python3.7/site-packages/cudf/utils/cudautils.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> numba <span class="keyword">import</span> cuda, int32, numpy_support</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;numpy_support&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;numba&#x27;</span> (/home/dell/anaconda3/envs/sanctuary/lib/python3<span class="number">.7</span>/site-packages/numba/__init__.py)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(sanctuary) dell@dell-PowerEdge-T640:/usr/local/cuda-11/lib64$ conda list numba</span><br><span class="line"><span class="comment"># packages in environment at /home/dell/anaconda3/envs/sanctuary:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name                    Version                   Build  Channel</span></span><br><span class="line">numba                     0.55.1          np1.11py3.7hc13618b_g76720bf88_0    numba</span><br><span class="line">(sanctuary) dell@dell-PowerEdge-T640:~$ conda install numba</span><br></pre></td></tr></table></figure>
+<p>![截屏2022-05-24 10.24.51](/Users/haohuang/Library/Application Support/typora-user-images/截屏2022-05-24 10.24.51.png)</p>
+<p><code>conda install -c nvidia -c rapidsai -c numba -c conda-forge -c defaults cudf=0.12</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(xgboostGPU) dell@dell-PowerEdge-T640:~$ python</span><br><span class="line">Python <span class="number">3.7</span><span class="number">.13</span> (default, Mar <span class="number">29</span> <span class="number">2022</span>, 02:<span class="number">18</span>:<span class="number">16</span>)</span><br><span class="line">[GCC <span class="number">7.5</span><span class="number">.0</span>] :: Anaconda, Inc. on linux</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> <span class="keyword">or</span> <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> cudf</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/cudf/__init__.py&quot;</span>, line <span class="number">4</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf <span class="keyword">import</span> core, datasets</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/cudf/core/__init__.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf.core <span class="keyword">import</span> buffer, column</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/cudf/core/column/__init__.py&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> cudf.core.column.categorical <span class="keyword">import</span> CategoricalColumn  <span class="comment"># noqa: F401</span></span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/cudf/core/column/categorical.py&quot;</span>, line <span class="number">7</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> pyarrow <span class="keyword">as</span> pa</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/pyarrow/__init__.py&quot;</span>, line <span class="number">49</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> pyarrow.lib <span class="keyword">import</span> cpu_count, set_cpu_count</span><br><span class="line">ImportError: libglog.so<span class="number">.0</span>: cannot <span class="built_in">open</span> shared <span class="built_in">object</span> file: No such file <span class="keyword">or</span> directory</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> pyarrow.lib <span class="keyword">import</span> cpu_count, set_cpu_count</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/home/dell/anaconda3/envs/xgboostGPU/lib/python3.7/site-packages/pyarrow/__init__.py&quot;</span>, line <span class="number">49</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> pyarrow.lib <span class="keyword">import</span> cpu_count, set_cpu_count</span><br><span class="line">ImportError: libglog.so<span class="number">.0</span>: cannot <span class="built_in">open</span> shared <span class="built_in">object</span> file: No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(xgboostGPU) dell@dell-PowerEdge-T640:~$ conda list pyarrow</span><br><span class="line"><span class="comment"># packages in environment at /home/dell/anaconda3/envs/xgboostGPU:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name                    Version                   Build  Channel</span></span><br><span class="line">pyarrow                   0.15.0           py37h8b68381_1    conda-forge</span><br></pre></td></tr></table></figure>
+<h4 id="in-taiyi">In Taiyi</h4>
+<p>nvidia和rapidsai没有国内镜像，可能需要更换节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install py-xgboost-gpu</span><br><span class="line">conda install -c rapidsai -c nvidia -c numba -c conda-forge cudf</span><br></pre></td></tr></table></figure>
+<p><code>cupy-7.8.0</code> and <code>pyarrow-0.15.0</code> from conda-forge</p>
+<p>通过conda list glog 发现版本是0.6，并且通过conda search发现有更低一个版本0.5，于是尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge glog=0.5</span><br></pre></td></tr></table></figure>
+<h4 id="for-importerror: libglogso.0: cannot open shared object file: no such file or directory">For ImportError: libglog.so.0: cannot open shared object file: No such file or directory</h4>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/bivald/pyarrow-on-pypy3/blob/13c72ee58ec67e58d6e65a6b1aa96bfd7dc27cf0/README.md" >https://github.com/bivald/pyarrow-on-pypy3/blob/13c72ee58ec67e58d6e65a6b1aa96bfd7dc27cf0/README.md<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://hub.docker.com/r/rapidsai/rapidsai/" >https://hub.docker.com/r/rapidsai/rapidsai/<i class="fas fa-external-link-alt"></i></a></p>
+<p>Others</p>
+<p>In the other situation, I can not use GPU because of outdated <a class="link"   target="_blank" rel="noopener" href="http://libxgboost.so" >libxgboost.so<i class="fas fa-external-link-alt"></i></a> (<a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65103861/how-to-install-xgboost-on-macos-compiled-with-gpu-support" >https://stackoverflow.com/questions/65103861/how-to-install-xgboost-on-macos-compiled-with-gpu-support<i class="fas fa-external-link-alt"></i></a>). In this case, need to compile and install xgboost,<br>
+cmake …/xgboost/ -DUSE_CUDA=ON<br>
+make -j<br>
+cd …/xgboost/python-package/<br>
+python <a class="link"   target="_blank" rel="noopener" href="http://setup.py" >setup.py<i class="fas fa-external-link-alt"></i></a> install<br>
+(taking an out-of-source build) (by default USE_CUDA=OFF, which means “Build with GPU acceleration” OFF)<br>
+During this compiling, I got No CMAKE_CUDA_COMPILER could be found. I just,<br>
+export PATH=/usr/local/cuda/bin:$PATH</p>
+<p>if necessary, you need to update CUDA version (<a class="link"   target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=18.04&amp;target_type=runfile_local" >https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=18.04&amp;target_type=runfile_local<i class="fas fa-external-link-alt"></i></a>).</p>
+<h4 id="finally:">Finally:</h4>
+<p>Conda Forge is likely the __glibc culprit.</p>
+<p>(<a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66914685/unsatisfiableerror-glibc-and-cudatoolkit" >https://stackoverflow.com/questions/66914685/unsatisfiableerror-glibc-and-cudatoolkit<i class="fas fa-external-link-alt"></i></a>)</p>
+<h4 id="for-onlyxgb">For onlyxgb</h4>
+<p>pip install dask-cuda==22.2.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dask-cuda 22.2.0 requires dask&lt;=2022.01.0,&gt;=2021.11.1, but you have dask 2022.2.0 which is incompatible.</span><br><span class="line">dask-cuda 22.2.0 requires distributed&lt;=2022.01.0,&gt;=2021.11.1, but you have distributed 2022.2.0 which is incompatible.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ERROR: pip&#x27;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span><br><span class="line">distributed 2022.2.0 requires dask==2022.02.0, but you have dask 2022.1.0 which is incompatible.</span><br><span class="line">dask-cuda 22.2.0 requires distributed&lt;=2022.01.0,&gt;=2021.11.1, but you have distributed 2022.2.0 which is incompatible.</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/05/25/Petsc-basic/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Petsc_basic</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/27/hexo-remove-footer-signal/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">hexo_remove footer signal</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2022&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao HUANG
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-miniconda%20thoroughly%20and%20install%20anaconda"><span class="nav-text">Remove miniconda thoroughly and install anaconda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#~~update-the%20version%20of%20glibc%20from%20gnu~~"><span class="nav-text">Update the version of glibc from GNU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#restrict-the%20version%20fo%20cudf"><span class="nav-text">Restrict the version fo cudf</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#after-installing%20cudf,"><span class="nav-text">After installing cudf,</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numba"><span class="nav-text">numba</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#in-taiyi"><span class="nav-text">In Taiyi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-importerror: libglogso.0: cannot open shared object file: no such file or directory"><span class="nav-text">For ImportError: libglog.so.0: cannot open shared object file: No such file or directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#finally:"><span class="nav-text">Finally:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-onlyxgb"><span class="nav-text">For onlyxgb</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
