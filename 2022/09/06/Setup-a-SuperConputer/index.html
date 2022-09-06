@@ -9,7 +9,7 @@
     
     <title>
         
-            Petsc_basic |
+            Setup_a_SuperConputer |
         
         Haha
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Petsc_basic</span>
+            <span class="title-hover-animation">Setup_a_SuperConputer</span>
         </div>
 
         
@@ -140,8 +140,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-25 13:07:28</span>
-        <span class="mobile">2022-05-25 13:07</span>
+        <span class="pc">2022-09-06 10:34:49</span>
+        <span class="mobile">2022-09-06 10:34</span>
     </span>
     
     
@@ -160,7 +160,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>178 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>117 Words</span>
         </span>
     
     
@@ -181,25 +181,14 @@
         
 
         <div class="article-content markdown-body">
-            <p>Revision of class MAE5032-HPC-by_Ju-LIU (<a class="link"   target="_blank" rel="noopener" href="https://ju-liu.github.io/" >https://ju-liu.github.io/<i class="fas fa-external-link-alt"></i></a>)</p>
-<h4 id="安装">安装</h4>
-<p>![截屏2022-05-25 13.09.06](/Users/haohuang/Documents/22_ink/source/_posts/Petsc-basic/fig1 2022-05-25 13.09.06.png)</p>
-<p>Besides, there are options for compiling, like <code>COPTFLAGS=&quot;-O3 -xHOST&quot; CXXOPTFLAGS=&quot;-O3 -xHOST&quot; FOPTFLAGS=&quot;-O3 -xHOST&quot;</code></p>
-<h4 id="petsc有几个模块">Petsc有几个模块</h4>
-<p>ksp: krylov subspace method;</p>
-<p>vec: vector;</p>
-<p>snes: nonlinear solver;</p>
-<p>ts: time solver;</p>
-<p>mat: matrix;</p>
-<p>tao: optimization;</p>
-<p>sys: system tools.</p>
-<h4 id="makefile样例的位置">Makefile样例的位置</h4>
-<p><code>$PETSC_DIR/share/petsc/Makefile.user</code></p>
-<h4 id="command-line arguments">Command line arguments</h4>
-<p>![截屏2022-05-25 13.31.20](/Users/haohuang/Documents/22_ink/source/_posts/Petsc-basic/fig2 2022-05-25 13.31.20.png)</p>
-<p>![截屏2022-05-25 13.46.05](/Users/haohuang/Documents/22_ink/source/_posts/Petsc-basic/fig3 2022-05-25 13.46.05.png)</p>
-<p>PetscInitialize(int *argc, char ***argv, char *file, char *help) initialize PETSc and MPI, where the argument help is a string that will be printed if the code is run with –help.</p>
-<h4 id=""></h4>
+            <p>This is a Centos7 machine</p>
+<h4 id="1-install icc ifort">1 Install icc ifort</h4>
+<p>It is quite easy for a root user</p>
+<p>I chose <strong>Intel® oneAPI HPC Toolkit</strong> (<a class="link"   target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html#gs.bec8rv" >https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html#gs.bec8rv<i class="fas fa-external-link-alt"></i></a>)![截屏2022-09-06 10.42.42](Setup-a-SuperConputer.assets/截屏2022-09-06 10.42.42.png)</p>
+<p>Then just follow the installation instructions</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tee &gt; /tmp/oneAPI.repo &lt;&lt; EOF</span><br><span class="line">[oneAPI]</span><br><span class="line">name=Intel® oneAPI repository</span><br><span class="line">baseurl=https://yum.repos.intel.com/oneapi</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /tmp/oneAPI.repo /etc/yum.repos.d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install intel-hpckit</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -229,14 +218,29 @@
         
             <div class="article-nav">
                 
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/09/06/Instruction-of-group-Servers2022/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Instruction_of_group_Servers2022</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/05/24/Installation-of-cudf-by-conda/"
+                           href="/2022/04/27/hexo-remove-footer-signal/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Conda installation for cudf xgboost-gpu</span>
+                                <span class="post-nav-title-item">hexo_remove footer signal</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -362,7 +366,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#petsc%E6%9C%89%E5%87%A0%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="nav-text">Petsc有几个模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#makefile%E6%A0%B7%E4%BE%8B%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-text">Makefile样例的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#command-line%20arguments"><span class="nav-text">Command line arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text"></span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li></ol>
     </div>
 </div>
         </aside>
