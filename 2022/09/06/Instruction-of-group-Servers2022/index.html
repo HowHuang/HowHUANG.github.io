@@ -145,8 +145,23 @@
     </span>
     
     
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/hpc/">hpc</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
     
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>193 Words</span>
+        </span>
     
     
         <span class="article-min2read article-meta-item">
@@ -166,7 +181,33 @@
         
 
         <div class="article-content markdown-body">
-            
+            <h5 id="1-login">1 Login</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@172.18.31.xx</span><br></pre></td></tr></table></figure>
+<p>which one do you need? cpu platform/gpu platform</p>
+<h5 id="2-basic command on linux">2 Basic command on linux</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
+<p>You should know using tab</p>
+<p><font color=red>Be careful using rm -rf *!!</font></p>
+<h5 id="3-understand your permissions on the server">3 Understand your permissions on the server</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx</span><br><span class="line">421</span><br></pre></td></tr></table></figure>
+<p><font color=red>Be ware of the permissions of . and …</font></p>
+<h5 id="4-where to store your data and your code">4 Where to store your data and your code</h5>
+<p>4.1 <strong><font color=red>Never Never Never</font></strong> store your datasets (input and output) in your home directory!!! That is relatively small for our servers</p>
+<p>4.2 Instead, in /portal1/dell/xxx-xxx</p>
+<p>4.3 If you need a relatively <font color=red>big space</font> to store your datasets, <font color=red>please ask administrators first</font></p>
+<p>4.4 There are some public data on /portal3</p>
+<h5 id="5-how to transfer data between servers">5 How to transfer data between servers</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp, rsync</span><br></pre></td></tr></table></figure>
+<h5 id="6-conda is usually enough for us">6 Conda is usually enough for us</h5>
+<p>6.1 sanctuary is good enough for most cases</p>
+<p>6.2 ~/.conda will store your environments</p>
+<p>6.3 <code>which python</code></p>
+<h5 id="7-access the remote jupyterlab">7 Access the remote jupyterlab</h5>
+<p>《服务器登陆Jupyterlab_4.0》</p>
+<h5 id="8-using taiyi">8 Using Taiyi</h5>
+<p>Ask Prof. LIU for opening an account first.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@172.18.6.175</span><br></pre></td></tr></table></figure>
+
         </div>
 
         
@@ -182,6 +223,14 @@
             </div>
         
 
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/hpc/">#hpc</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -320,7 +369,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-basic%20command%20on%20linux"><span class="nav-text">2 Basic command on linux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-understand%20your%20permissions%20on%20the%20server"><span class="nav-text">3 Understand your permissions on the server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-where%20to%20store%20your%20data%20and%20your%20code"><span class="nav-text">4 Where to store your data and your code</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-how%20to%20transfer%20data%20between%20servers"><span class="nav-text">5 How to transfer data between servers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-conda%20is%20usually%20enough%20for%20us"><span class="nav-text">6 Conda is usually enough for us</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-access%20the%20remote%20jupyterlab"><span class="nav-text">7 Access the remote jupyterlab</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-using%20taiyi"><span class="nav-text">8 Using Taiyi</span></a></li></ol>
     </div>
 </div>
         </aside>
