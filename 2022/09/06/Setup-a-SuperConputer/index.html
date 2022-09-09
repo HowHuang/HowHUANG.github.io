@@ -160,7 +160,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>348 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>442 Words</span>
         </span>
     
     
@@ -198,6 +198,18 @@
 <h4 id="2-use upgraded version of gfortran">2 Use upgraded version of gfortran</h4>
 <p>see <a class="link"   target="_blank" rel="noopener" href="https://forums.centos.org/viewtopic.php?t=68954" >https://forums.centos.org/viewtopic.php?t=68954<i class="fas fa-external-link-alt"></i></a>, we need to install Devtoolset, which will not do replace system packages but provide packages through a bash shell:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)</span><br><span class="line">Copyright (C) 2015 Free Software Foundation, Inc.</span><br><span class="line">$ scl <span class="built_in">enable</span> devtoolset-7 bash</span><br><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 7.3.1 20180303 (Red Hat 7.3.1-5)</span><br><span class="line">Copyright (C) 2017 Free Software Foundation, Inc.</span><br><span class="line">$ <span class="comment"># compile in this shell</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)</span><br><span class="line">Copyright (C) 2015 Free Software Foundation, Inc.</span><br></pre></td></tr></table></figure>
+<p>version 10 was also installed</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scl <span class="built_in">enable</span> devtoolset-10 bash</span><br></pre></td></tr></table></figure>
+<h4 id="3-install anaconda">3 Install anaconda</h4>
+<p>When installation, specify the path to <code>/opt/anaconda3</code> (for root to install, the path is <code>/root/anaconda3</code> by default)</p>
+<p>A new user to activate anaconda bash should run</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/anaconda3/bin/conda init bash</span><br></pre></td></tr></table></figure>
+<h4 id="4-visulization of basic command (via progress)">4 Visulization of basic command (via progress)</h4>
+<p>After installing progress, just like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> bigfile newfile &amp; progress -mp $!</span><br></pre></td></tr></table></figure>
+<p>$! means the last running process’s PID by shell in the background</p>
+<p>Notice that some command has already the option for visulizing the progress, like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dv *.gz</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -375,7 +387,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-use%20upgraded%20version%20of%20gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-use%20upgraded%20version%20of%20gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-install%20anaconda"><span class="nav-text">3 Install anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-visulization%20of%20basic%20command%20(via%20progress)"><span class="nav-text">4 Visulization of basic command (via progress)</span></a></li></ol>
     </div>
 </div>
         </aside>
