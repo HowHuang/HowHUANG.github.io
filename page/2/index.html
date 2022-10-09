@@ -9,8 +9,6 @@
     
     <title>
         
-            Expressions4attribute_inQGIS |
-        
         Haha
     </title>
     
@@ -64,7 +62,7 @@
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/"
                             >
                                 HOME
@@ -95,7 +93,7 @@
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/">HOME</a>
                 </li>
             
@@ -119,134 +117,62 @@
             <div class="main-content">
 
                 
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">Expressions4attribute_inQGIS</span>
-        </div>
-
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
         
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/logo_me.jpeg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Hao HUANG</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-09-17 16:31:33</span>
-        <span class="mobile">2022-09-17 16:31</span>
-    </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/QGIS/">QGIS</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
+            <li class="home-article-item">
 
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>126 Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/04/24/xarray-time/">
+                        xarray_time
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        I have failed to convert datetime format from ‘float’ (such as 199601) to ‘datetime64’ when input multiple nc. files by using...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Apr 24 2022 10:32:57 GMT+0800">2022-04-24</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/python/">python</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/04/24/xarray-time/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
-                    </div>
-                </div>
-            </div>
+            </li>
         
-
-        <div class="article-content markdown-body">
-            <p>I used this expression in attribute table to create a column of values to represent character strings</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CASE WHEN xx = &#x27;su&#x27; THEN 0 </span><br><span class="line">WHEN xx = &#x27;ss&#x27; THEN 1 </span><br><span class="line">WHEN xx = &#x27;py&#x27; THEN 2 </span><br><span class="line">WHEN xx = &#x27;sm&#x27; THEN 3 </span><br><span class="line">WHEN xx = &#x27;sc&#x27; THEN 4 </span><br><span class="line">WHEN xx = &#x27;ev&#x27; THEN 5 </span><br><span class="line">WHEN xx = &#x27;va&#x27; THEN 6 </span><br><span class="line">WHEN xx = &#x27;vi&#x27; THEN 7 </span><br><span class="line">WHEN xx = &#x27;vb&#x27; THEN 8 </span><br><span class="line">WHEN xx = &#x27;pa&#x27; THEN 9 </span><br><span class="line">WHEN xx = &#x27;pi&#x27; THEN 10 </span><br><span class="line">WHEN xx = &#x27;pb&#x27; THEN 11 </span><br><span class="line">WHEN xx = &#x27;mt&#x27; THEN 12 </span><br><span class="line">WHEN xx = &#x27;wb&#x27; THEN 13 </span><br><span class="line">WHEN xx = &#x27;ig&#x27; THEN 14 </span><br><span class="line">ELSE 15 </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-        </div>
-
-        
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
     </ul>
+
+    <div class="home-paginator">
+        <div class="paginator">
+    
+        <a class="prev btn"
+           href="/"
+        >Prev</a>
+    
+
+    
 </div>
 
-            </div>
-        
-
-        
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/QGIS/">#QGIS</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/10/09/Manage-a-SuperConputer/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Manage_a_SuperConputer</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2022/09/09/Too-many-rg-occupy-CPU/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Too-many_rg_occupy_CPU</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
     </div>
 </div>
 
@@ -294,23 +220,6 @@
     </div>
 
     
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
-    
 
     <div class="right-bottom-side-tools">
         <div class="side-tools-container">
@@ -357,14 +266,6 @@
     </div>
 
     
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        
-    </div>
-</div>
-        </aside>
-    
 
     <div class="image-viewer-container">
     <img src="">
@@ -374,6 +275,7 @@
     
 
 </main>
+
 
 
 
@@ -388,8 +290,6 @@
 
 
 <div class="post-scripts pjax">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 

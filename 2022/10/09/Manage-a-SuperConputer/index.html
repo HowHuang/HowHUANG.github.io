@@ -9,7 +9,7 @@
     
     <title>
         
-            Expressions4attribute_inQGIS |
+            Manage_a_SuperConputer |
         
         Haha
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Expressions4attribute_inQGIS</span>
+            <span class="title-hover-animation">Manage_a_SuperConputer</span>
         </div>
 
         
@@ -140,8 +140,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-09-17 16:31:33</span>
-        <span class="mobile">2022-09-17 16:31</span>
+        <span class="pc">2022-10-09 17:26:07</span>
+        <span class="mobile">2022-10-09 17:26</span>
     </span>
     
     
@@ -150,7 +150,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/QGIS/">QGIS</a>&nbsp;
+                        <a href="/tags/hpc/">hpc</a>&nbsp;
                     </li>
                 
             </ul>
@@ -160,7 +160,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>126 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>285 Words</span>
         </span>
     
     
@@ -181,8 +181,22 @@
         
 
         <div class="article-content markdown-body">
-            <p>I used this expression in attribute table to create a column of values to represent character strings</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CASE WHEN xx = &#x27;su&#x27; THEN 0 </span><br><span class="line">WHEN xx = &#x27;ss&#x27; THEN 1 </span><br><span class="line">WHEN xx = &#x27;py&#x27; THEN 2 </span><br><span class="line">WHEN xx = &#x27;sm&#x27; THEN 3 </span><br><span class="line">WHEN xx = &#x27;sc&#x27; THEN 4 </span><br><span class="line">WHEN xx = &#x27;ev&#x27; THEN 5 </span><br><span class="line">WHEN xx = &#x27;va&#x27; THEN 6 </span><br><span class="line">WHEN xx = &#x27;vi&#x27; THEN 7 </span><br><span class="line">WHEN xx = &#x27;vb&#x27; THEN 8 </span><br><span class="line">WHEN xx = &#x27;pa&#x27; THEN 9 </span><br><span class="line">WHEN xx = &#x27;pi&#x27; THEN 10 </span><br><span class="line">WHEN xx = &#x27;pb&#x27; THEN 11 </span><br><span class="line">WHEN xx = &#x27;mt&#x27; THEN 12 </span><br><span class="line">WHEN xx = &#x27;wb&#x27; THEN 13 </span><br><span class="line">WHEN xx = &#x27;ig&#x27; THEN 14 </span><br><span class="line">ELSE 15 </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+            <p>This is a Centos7 machine</p>
+<h4 id="1-add users">1 Add users</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd xx-x</span><br><span class="line">passwd xx-x </span><br></pre></td></tr></table></figure>
+<h4 id="2-create a limited manager">2 Create a limited manager</h4>
+<p>I let users in <code>wheel</code> group to be the limited manager</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) [root@dell ~]<span class="comment"># gpasswd -a xx-s wheel</span></span><br><span class="line">正在将用户“xx-s”加入到“wheel”组中</span><br></pre></td></tr></table></figure>
+<p>Then change the permissions of <code>wheel</code> group by modifying the <code>/etc/sudoers</code></p>
+<p><code>/etc/sudoers</code> might be not writable at first</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>Using the following Aliases to group the command lines</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Networking</span></span></span><br><span class="line">Cmnd_Alias NETWORKING = /sbin/route, /sbin/ifconfig, /bin/ping, /sbin/dhclient, /usr/bin/net, /sbin/iptables, /usr/bin/rfcomm, /usr/bin/wvdial, /sbin/iwconfig, /sbin/mii-tool</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Installation and management of software</span></span></span><br><span class="line">Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Services</span></span></span><br><span class="line">Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig, /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl reload, /usr/bin/systemctl restart, /usr/bin/systemctl status, /usr/bin/systemctl enable, /usr/bin/systemctl disable</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Updating the locate database</span></span></span><br><span class="line">Cmnd_Alias LOCATE = /usr/bin/updatedb</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Storage</span></span></span><br><span class="line">Cmnd_Alias STORAGE = /sbin/fdisk, /sbin/sfdisk, /sbin/parted, /sbin/partprobe, /bin/mount, /bin/umount</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Delegating permissions</span></span></span><br><span class="line">Cmnd_Alias DELEGATING = /usr/sbin/visudo, /bin/chown, /bin/chmod, /bin/chgrp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Processes</span></span></span><br><span class="line">Cmnd_Alias PROCESSES = /bin/nice, /bin/kill, /usr/bin/kill, /usr/bin/killall</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Drivers</span></span></span><br><span class="line">Cmnd_Alias DRIVERS = /sbin/modprobe</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Affect other users</span></span></span><br><span class="line">Cmnd_Alias AFFECT = /usr/bin/rm, /usr/bin/mv</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>the last one about AFFECT is created by me to avoid the very bad manager to delete the documents of other normal users</p>
+</blockquote>
+<p>Finally, let the users in <code>wheel</code> group can only use the limited commands within pre-setted Aliases as a root user</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Allows people in group wheel to run all commands</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">%wheel        ALL=(ALL)       ALL</span></span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">wheel ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, LOCATE, DRIVERS</span></span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -203,7 +217,7 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/QGIS/">#QGIS</a>&nbsp;
+                        <a href="/tags/hpc/">#hpc</a>&nbsp;
                     </li>
                 
             </ul>
@@ -212,29 +226,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/10/09/Manage-a-SuperConputer/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Manage_a_SuperConputer</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/09/09/Too-many-rg-occupy-CPU/"
+                           href="/2022/09/17/Expressions4attribute-inQGIS/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Too-many_rg_occupy_CPU</span>
+                                <span class="post-nav-title-item">Expressions4attribute_inQGIS</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -360,7 +359,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-add%20users"><span class="nav-text">1 Add users</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-create%20a%20limited%20manager"><span class="nav-text">2 Create a limited manager</span></a></li></ol>
     </div>
 </div>
         </aside>
