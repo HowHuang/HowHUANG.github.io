@@ -9,7 +9,7 @@
     
     <title>
         
-            Tag: hexo |
+            Pixel-is-an-area-or-point?_a-special-detail-for-gdal |
         
         Haha
     </title>
@@ -120,49 +120,123 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;hexo
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Pixel-is-an-area-or-point?_a-special-detail-for-gdal</span>
         </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/logo_me.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Hao HUANG</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-01-06 14:24:36</span>
+        <span class="mobile">2023-01-06 14:24</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[2]</span>
-            </div>
-            <ul class="article-list">
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/04/27/hexo-remove-footer-signal/"
-                        >hexo_remove footer signal</a>
-                        <span class="article-date">04-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/04/24/hexo-errors/"
-                        >hexo_errors</a>
-                        <span class="article-date">04-24</span>
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>115 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="when-i frequently deal with the map in formats of nc and tiff, i found a detail that pixel is a point or an area">When I frequently deal with the map in formats of nc and tiff, I found a detail that pixel is a point or an area</h4>
+<p>This means we use the center of a pixel or the corner of a pixel, which is explained clearly in <a class="link"   target="_blank" rel="noopener" href="https://github.com/opengeospatial/ogcapi-coverages/issues/92" >https://github.com/opengeospatial/ogcapi-coverages/issues/92<i class="fas fa-external-link-alt"></i></a></p>
+<p>For me, I use gdal a lot. If using gdal’s GeoTransform to read a tif, be careful that</p>
+<blockquote>
+<p>the pixel/line coordinates are from (0.0,0.0) at the top left corner of the top left pixel to (width_in_pixels,height_in_pixels) at the bottom right corner of the bottom right pixel</p>
+</blockquote>
+<p>See the official document: <a class="link"   target="_blank" rel="noopener" href="https://gdal.org/user/raster_data_model.html" >https://gdal.org/user/raster_data_model.html<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
-    </div>
 
-    <div class="tag-paginator">
-        <div class="paginator">
-    
-
-    
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
 </div>
 
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/10/09/Manage-a-SuperComputer/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Manage_a_SuperComputer</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
 
@@ -210,6 +284,23 @@
     </div>
 
     
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
 
     <div class="right-bottom-side-tools">
         <div class="side-tools-container">
@@ -256,6 +347,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#when-i%20frequently%20deal%20with%20the%20map%20in%20formats%20of%20nc%20and%20tiff,%20i%20found%20a%20detail%20that%20pixel%20is%20a%20point%20or%20an%20area"><span class="nav-text">When I frequently deal with the map in formats of nc and tiff, I found a detail that pixel is a point or an area</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -279,6 +378,8 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 
