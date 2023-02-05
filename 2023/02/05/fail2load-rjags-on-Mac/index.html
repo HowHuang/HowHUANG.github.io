@@ -160,7 +160,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>355 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>372 Words</span>
         </span>
     
     
@@ -193,7 +193,8 @@
 <li>
 <h5 id="then-install rjags by devtools">Then install rjags by devtools</h5>
 <p>The following code was modified from <a class="link"   target="_blank" rel="noopener" href="https://gist.github.com/casallas/8411082" >https://gist.github.com/casallas/8411082<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devtools<span class="operator">::</span>install_url<span class="punctuation">(</span><span class="string">&quot;http://sourceforge.net/projects/mcmc-jags/files/rjags/4/rjags_4-4.tar.gz&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                      build_opts<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;--with-jags-includedir=/opt/homebrew/opt/jags/include/JAGS&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                   <span class="string">&quot;--with-jags-libdir=/opt/homebrew/opt/jags/lib&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devtools::install_url(&quot;http://sourceforge.net/projects/mcmc-jags/files/rjags/4/rjags_4-4.tar.gz&quot;, </span><br><span class="line">                      build_opts=c(&quot;--with-jags-includedir=/opt/homebrew/opt/jags/include/JAGS&quot;,</span><br><span class="line">                                   &quot;--with-jags-libdir=/opt/homebrew/opt/jags/lib&quot;))</span><br></pre></td></tr></table></figure>
+<p>source code can also be found in <a class="link"   target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/rjags/index.html" >https://cran.r-project.org/web/packages/rjags/index.html<i class="fas fa-external-link-alt"></i></a></p>
 </li>
 <li>
 <h5 id="actrually-this is because that rjags package is an interface to the jags library">Actrually this is because that rjags package is an interface to the JAGS library.</h5>
