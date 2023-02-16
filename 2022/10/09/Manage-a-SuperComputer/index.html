@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>285 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>296 Words</span>
         </span>
     
     
@@ -196,7 +196,7 @@
         <div class="article-content markdown-body">
             <p>This is a Centos7 machine</p>
 <h4 id="1-add users">1 Add users</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd xx-x</span><br><span class="line">passwd xx-x </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd xx-x</span><br><span class="line">passwd xx-x</span><br><span class="line"><span class="comment">## optional; add the user into the group</span></span><br><span class="line">usermod -g members xx-xx</span><br></pre></td></tr></table></figure>
 <h4 id="2-create a limited manager">2 Create a limited manager</h4>
 <p>I let users in <code>wheel</code> group to be the limited manager</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) [root@dell ~]<span class="comment"># gpasswd -a xx-s wheel</span></span><br><span class="line">正在将用户“xx-s”加入到“wheel”组中</span><br></pre></td></tr></table></figure>
