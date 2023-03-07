@@ -173,12 +173,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>471 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>544 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -225,6 +225,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dv *.gz</span><br></pre></td></tr></table></figure>
 <h4 id="5-login through ssh might be slow">5 Login through ssh might be slow</h4>
 <p>This method might be specific for Centos, we followed this method to solve it (<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/ssh-slow.html" >https://www.runoob.com/w3cnote/ssh-slow.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<h4 id="6-install git">6 Install git</h4>
+<p>check the processor belonging to 32-bit or 64-bit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file /bin/ls</span><br></pre></td></tr></table></figure>
+<p>get EPEL and then install git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## for 64-bit</span></span><br><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line"><span class="comment">## for 32-bit</span></span><br><span class="line">get http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -402,7 +408,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-use%20upgraded%20version%20of%20gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-install%20anaconda"><span class="nav-text">3 Install anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-visulization%20of%20basic%20command%20(via%20progress)"><span class="nav-text">4 Visulization of basic command (via progress)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-login%20through%20ssh%20might%20be%20slow"><span class="nav-text">5 Login through ssh might be slow</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-use%20upgraded%20version%20of%20gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-install%20anaconda"><span class="nav-text">3 Install anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-visulization%20of%20basic%20command%20(via%20progress)"><span class="nav-text">4 Visulization of basic command (via progress)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-login%20through%20ssh%20might%20be%20slow"><span class="nav-text">5 Login through ssh might be slow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-install%20git"><span class="nav-text">6 Install git</span></a></li></ol>
     </div>
 </div>
         </aside>
