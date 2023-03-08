@@ -9,7 +9,7 @@
     
     <title>
         
-            fail2load_rjags_on-Mac |
+            upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found |
         
         Haha
     </title>
@@ -136,7 +136,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">fail2load_rjags_on-Mac</span>
+            <span class="title-hover-animation">upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found</span>
         </div>
 
         
@@ -153,8 +153,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2023-02-05 17:04:13</span>
-        <span class="mobile">2023-02-05 17:04</span>
+        <span class="pc">2023-03-07 22:09:52</span>
+        <span class="mobile">2023-03-07 22:09</span>
     </span>
     
     
@@ -163,7 +163,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/R/">R</a>&nbsp;
+                        <a href="/tags/hpc/">hpc</a>&nbsp;
                     </li>
                 
             </ul>
@@ -173,12 +173,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>372 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>618 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -194,27 +194,21 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="when-library(rjags), failing to load the package since">When library(rjags), failing to load the package since</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> library<span class="punctuation">(</span>rjags<span class="punctuation">)</span></span><br><span class="line">Error<span class="operator">:</span> package or namespace load failed <span class="keyword">for</span> ‘rjags’<span class="operator">:</span></span><br><span class="line"> .onLoad failed <span class="keyword">in</span> loadNamespace<span class="punctuation">(</span><span class="punctuation">)</span> <span class="keyword">for</span> <span class="string">&#x27;rjags&#x27;</span><span class="punctuation">,</span> details<span class="operator">:</span></span><br><span class="line">  <span class="built_in">call</span><span class="operator">:</span> dyn.load<span class="punctuation">(</span>file<span class="punctuation">,</span> DLLpath <span class="operator">=</span> DLLpath<span class="punctuation">,</span> ...<span class="punctuation">)</span></span><br><span class="line">  error<span class="operator">:</span> unable to load shared object <span class="string">&#x27;/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/rjags/libs/rjags.so&#x27;</span><span class="operator">:</span></span><br><span class="line">  dlopen<span class="punctuation">(</span><span class="operator">/</span>Library<span class="operator">/</span>Frameworks<span class="operator">/</span>R.framework<span class="operator">/</span>Versions<span class="operator">/</span><span class="number">4.2</span><span class="operator">-</span>arm64<span class="operator">/</span>Resources<span class="operator">/</span>library<span class="operator">/</span>rjags<span class="operator">/</span>libs<span class="operator">/</span>rjags.so<span class="punctuation">,</span> <span class="number">0x000A</span><span class="punctuation">)</span><span class="operator">:</span> Library not loaded<span class="operator">:</span> <span class="operator">/</span>usr<span class="operator">/</span>local<span class="operator">/</span>lib<span class="operator">/</span>libjags.4.dylib</span><br><span class="line">  Referenced from<span class="operator">:</span> <span class="operator">&lt;</span><span class="number">82</span>D1D1F8<span class="operator">-</span>CC85<span class="operator">-</span><span class="number">3273</span><span class="operator">-</span>A9BC<span class="operator">-</span>B86843329438<span class="operator">&gt;</span> <span class="operator">/</span>Library<span class="operator">/</span>Frameworks<span class="operator">/</span>R.framework<span class="operator">/</span>Versions<span class="operator">/</span><span class="number">4.2</span><span class="operator">-</span>arm64<span class="operator">/</span>Resources<span class="operator">/</span>library<span class="operator">/</span>rjags<span class="operator">/</span>libs<span class="operator">/</span>rjags.so</span><br><span class="line">  Reason<span class="operator">:</span> tried<span class="operator">:</span> <span class="string">&#x27;/usr/local/lib/libjags.4.dylib&#x27;</span> <span class="punctuation">(</span>no such file<span class="punctuation">)</span><span class="punctuation">,</span> <span class="string">&#x27;/System/Volumes/Preboot/Cryptexes/OS/usr/local/lib/libjags.4.dylib&#x27;</span> <span class="punctuation">(</span>no such file<span class="punctuation">)</span><span class="punctuation">,</span> <span class="string">&#x27;/usr/local/lib/libjags.4.dylib&#x27;</span> <span class="punctuation">(</span>no such file<span class="punctuation">)</span><span class="punctuation">,</span> <span class="string">&#x27;/usr/lib/libjags.4.dylib&#x27;</span> <span class="punctuation">(</span>no such file<span class="punctuation">,</span> not <span class="keyword">in</span> dyld cache<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>
-<h5 id="to-solve it, firstly need to install jags by homebrew">To solve it, firstly need to install jags by homebrew</h5>
-<p>running this code by Terminal (see <a class="link"   target="_blank" rel="noopener" href="https://macappstore.org/jags/" >https://macappstore.org/jags/<i class="fas fa-external-link-alt"></i></a>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line">brew install jags</span><br></pre></td></tr></table></figure>
-<p>then can find jags in <code>/opt/homebrew/opt/jags</code></p>
-</li>
-<li>
-<h5 id="then-install rjags by devtools">Then install rjags by devtools</h5>
-<p>The following code was modified from <a class="link"   target="_blank" rel="noopener" href="https://gist.github.com/casallas/8411082" >https://gist.github.com/casallas/8411082<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devtools::install_url(&quot;http://sourceforge.net/projects/mcmc-jags/files/rjags/4/rjags_4-4.tar.gz&quot;, </span><br><span class="line">                      build_opts=c(&quot;--with-jags-includedir=/opt/homebrew/opt/jags/include/JAGS&quot;,</span><br><span class="line">                                   &quot;--with-jags-libdir=/opt/homebrew/opt/jags/lib&quot;))</span><br></pre></td></tr></table></figure>
-<p>source code can also be found in <a class="link"   target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/rjags/index.html" >https://cran.r-project.org/web/packages/rjags/index.html<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li>
-<h5 id="actrually-this is because that rjags package is an interface to the jags library">Actrually this is because that rjags package is an interface to the JAGS library.</h5>
-<p>See <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/70533673/error-package-or-namespace-load-failed-for-rjags" >https://stackoverflow.com/questions/70533673/error-package-or-namespace-load-failed-for-rjags<i class="fas fa-external-link-alt"></i></a></p>
-<p>So, for Mac M1 chips, another method is to download JAGS from <a class="link"   target="_blank" rel="noopener" href="https://sourceforge.net/p/mcmc-jags/support-requests/8/" >https://sourceforge.net/p/mcmc-jags/support-requests/8/<i class="fas fa-external-link-alt"></i></a>, and then directly to install rjags by <code>install.packages(&quot;rjags&quot;)</code> (since this install method will load the dynamic library from JAGS, not homebrew’s jags)</p>
-</li>
-</ol>
+            <p>This is a Centos7 machine</p>
+<p>The error raised by:</p>
+<h4 id="ifort:-/lib64/libstdc++so.6: version `glibcxx_3.4.21' not found (required by ifort)">ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)</h4>
+<p>There seems two ways to solve it, according to <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7" >https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7<i class="fas fa-external-link-alt"></i></a>.</p>
+<p>One way is to build a higher version gcc for providing a <code>libstdc++.so.6</code> and <code>libstdc++.so.6.0.24</code>; The second way is to install gcc by conda and then modify <code>LD_LIBRARY_PATH</code>.</p>
+<p>I try the first way by installing gcc-8.3.0, referring to <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/NanZhiHan/p/11010130.html" >https://www.cnblogs.com/NanZhiHan/p/11010130.html<i class="fas fa-external-link-alt"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44575514/article/details/105842062" >https://blog.csdn.net/weixin_44575514/article/details/105842062<i class="fas fa-external-link-alt"></i></a>. That is:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz</span><br><span class="line">tar zxf gcc-8.3.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> gcc-8.3.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure>
+<p>which is to download gmp, mpfr, mpc, isl. If the process is slow, 1) the <code>base_url</code> in <code>./contrib/download_prerequisites</code> can be modified from <code>ftp://gcc.gnu.org/pub/gcc/infrastructure/</code> to <code>http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/infrastructure/</code>; or 2) download the four packages from <a class="link"   target="_blank" rel="noopener" href="https://gcc.gnu.org/pub/gcc/infrastructure/" >https://gcc.gnu.org/pub/gcc/infrastructure/<i class="fas fa-external-link-alt"></i></a> by another pc and then move them to the server.</p>
+<p>After receive the following,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gmp-6.1.0.tar.bz2: 确定</span><br><span class="line">mpfr-3.1.4.tar.bz2: 确定</span><br><span class="line">mpc-1.0.3.tar.gz: 确定</span><br><span class="line">isl-0.18.tar.bz2: 确定</span><br><span class="line">All prerequisites downloaded successfully.</span><br></pre></td></tr></table></figure>
+<p>going to the next step for an out-of-source build</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../configure --prefix=/usr/local/gcc --enable-languages=c,c++ --disable-multilib</span><br><span class="line">make -j</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line"></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/gcc /usr/bin/gcc_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/gcc /usr/bin/gcc</span><br><span class="line"><span class="built_in">mv</span> /usr/bin/g++ /usr/bin/g++_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/g++ /usr/bin/g++</span><br><span class="line"></span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br></pre></td></tr></table></figure>
+<p>Finally, replace the so library</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/gcc/lib64</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6_bak</span><br><span class="line"><span class="built_in">cp</span> libstdc++.so.6.0.25 /usr/lib64/libstdc++.so.6</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -235,7 +229,7 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/R/">#R</a>&nbsp;
+                        <a href="/tags/hpc/">#hpc</a>&nbsp;
                     </li>
                 
             </ul>
@@ -244,29 +238,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2023/03/07/upgrade-gcc-on-Centos7-for-GLIBCXX-3-4-21-not-found/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2023/01/17/ssh-error-on-kex-exchange-identification/"
+                           href="/2023/02/05/fail2load-rjags-on-Mac/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">ssh-error_on_kex_exchange_identification</span>
+                                <span class="post-nav-title-item">fail2load_rjags_on-Mac</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -392,7 +371,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#when-library(rjags),%20failing%20to%20load%20the%20package%20since"><span class="nav-text">When library(rjags), failing to load the package since</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#to-solve%20it,%20firstly%20need%20to%20install%20jags%20by%20homebrew"><span class="nav-text">To solve it, firstly need to install jags by homebrew</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#then-install%20rjags%20by%20devtools"><span class="nav-text">Then install rjags by devtools</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#actrually-this%20is%20because%20that%20rjags%20package%20is%20an%20interface%20to%20the%20jags%20library"><span class="nav-text">Actrually this is because that rjags package is an interface to the JAGS library.</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ifort:-/lib64/libstdc++so.6: version `glibcxx_3.4.21' not found (required by ifort)"><span class="nav-text">ifort: &#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found (required by ifort)</span></a></li></ol>
     </div>
 </div>
         </aside>
