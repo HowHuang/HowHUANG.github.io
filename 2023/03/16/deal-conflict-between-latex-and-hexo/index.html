@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>185 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>224 Words</span>
         </span>
     
     
@@ -194,7 +194,7 @@
         
 
         <div class="article-content markdown-body">
-            <p>Hexo has original problems on escaping characters in LaTeX, but many people provided a relatively stable solutions. See</p>
+            <p>Hexo has original problems on escaping characters in LaTeX, but many people provided a relatively stable solutions.</p>
 <h5 id="reinstall-the render engines of hexo">Reinstall the render engines of hexo</h5>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm uninstall hexo-math --save</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-kramed --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure>
@@ -218,7 +218,10 @@
 <p>the url is referring to <a class="link"   target="_blank" rel="noopener" href="https://cdnjs.com/libraries/mathjax/2.7.9" >https://cdnjs.com/libraries/mathjax/2.7.9<i class="fas fa-external-link-alt"></i></a></p>
 </li>
 <li>
-<p>in the theme’s ``</p>
+<p>in the theme’s <code>_config.yml_</code></p>
+<p>adding the setting to activate mathjax</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax</span>:</span><br><span class="line">  <span class="attr">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="attr">per_page</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>where per_page=true means every post will be auto rendered by mathjax, while per_page=false means every post should set a <code>mathjax: true</code> in its head lines</p>
 </li>
 </ol>
 
