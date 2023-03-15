@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>86 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>87 Words</span>
         </span>
     
     
@@ -194,7 +194,8 @@
         
 
         <div class="article-content markdown-body">
-            <h5 id="When-ssh-an-error-happens-by-returning-kex-exchange-identification-read-Connection-reset-by-peer"><a href="#When-ssh-an-error-happens-by-returning-kex-exchange-identification-read-Connection-reset-by-peer" class="headerlink" title="When ssh, an error happens by returning kex_exchange_identification: read: Connection reset by peer"></a>When ssh, an error happens by returning kex_exchange_identification: read: Connection reset by peer</h5><p>I login in the server and correct two numbers in ssh config document</p>
+            <h5 id="when-ssh, an error happens by returning kex_exchange_identification: read: connection reset by peer">When ssh, an error happens by returning kex_exchange_identification: read: Connection reset by peer</h5>
+<p>I login in the server and correct two numbers in ssh config document</p>
 <p>The two numbers need to understand are MaxSessions and MaxStartups</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) [root@xxx ~]<span class="comment"># cat /etc/ssh/sshd_config | grep MaxStartups</span></span><br><span class="line"><span class="comment">#MaxStartups 10:30:100</span></span><br></pre></td></tr></table></figure>
 <p>So in /etc/ssh/sshd_config, I set MaxSessions and MaxStartups to be</p>
@@ -376,7 +377,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#When-ssh-an-error-happens-by-returning-kex-exchange-identification-read-Connection-reset-by-peer"><span class="nav-text">When ssh, an error happens by returning kex_exchange_identification: read: Connection reset by peer</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#when-ssh,%20an%20error%20happens%20by%20returning%20kex_exchange_identification:%20read:%20connection%20reset%20by%20peer"><span class="nav-text">When ssh, an error happens by returning kex_exchange_identification: read: Connection reset by peer</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -457,6 +458,6 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
