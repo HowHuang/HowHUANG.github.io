@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hao_HUANG">
+    
+    <title>
+        
+            failure-of_controlling-fans_by-PWM_truenas-scale |
+        
+        Haha
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_me.jpeg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/logo_me.jpeg","favicon":"/images/logo_me.jpeg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/first-screan_bg.png","description":null},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Haha
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">failure-of_controlling-fans_by-PWM_truenas-scale</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/logo_me.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Hao_HUANG</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-05-05 10:15:37</span>
+        <span class="mobile">2023-05-05 10:15</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/hardware/">hardware</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>955 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>In my DIY nas, I selected to use turenas-scale 22.12.2</p>
+<p>A fan was connected to j4125, but the system could not realize it. This problem is complex.</p>
+<p>Overall, three steps should be finished</p>
+<ol>
+<li>unlock the <code>apt-get</code> in the system (this is important since it will make easy to install many dependences in the following step)</li>
+<li><code>make</code> the module of NCT6775 from the source core of linux kernel</li>
+<li>launch docker image by docker-compose from turenas chart</li>
+</ol>
+<h4 id="0-earlier attempt of unlock the `apt-get`">0. earlier attempt of unlock the <code>apt-get</code></h4>
+<h5 id="0a-lack of nurses">0a. Lack of nurses</h5>
+<p>In my attemps, I had tried to <code>make</code> linux kernel and got <code>Unable to find the ncurses package ... make[1]: *** [scripts/kconfig/Makefile:211: scripts/kconfig/mconf-cfg] Error 1</code> . So, I did not install the nurses by <code>apt-get</code>, but by <code>make</code>. For others, you can directly go to 1b to install <code>apt-get</code> and then install the nurses more easily by <code>sudo apt-get install libncurses5-dev libncursesw5-dev</code>.</p>
+<p>I installed version 6.1 refering to <a class="link"   target="_blank" rel="noopener" href="https://linux.cn/article-9693-1.html#:~:text=%24%20sudo%20dnf%20install%20ncurses-devel%20%E5%9C%A8%20Debian%E3%80%81Ubuntu%E3%80%81Linux%20Mint,apt-get%20install%20libncurses5-dev%20libncursesw5-dev%20%E9%BB%98%E8%AE%A4%E4%BB%93%E5%BA%93%E4%B8%AD%E7%9A%84%20GNU%20ncureses%20%E5%8F%AF%E8%83%BD%E6%9C%89%E7%82%B9%E8%80%81%E4%BA%86%E3%80%82" >this blog<i class="fas fa-external-link-alt"></i></a>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz</span><br><span class="line">tar xzf ncurses-6.1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> ncurses-6.1</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>Notice that do not modify its default location by <code> --prefix=/opt/ncurses</code></p>
+<h5 id="0b-find correct version of apt and download">0b find correct version of apt and download</h5>
+<p>In the beginning, I was considering there was not <code>apt-get</code> in the turenas scale, so I install two packages from <a class="link"   target="_blank" rel="noopener" href="http://mirrors.163.com/debian/pool/main/a/apt/" >http://mirrors.163.com/debian/pool/main/a/apt/<i class="fas fa-external-link-alt"></i></a>, and then use <code>sudo dpkg -i</code>. The version of packages should be validated according to the version of debian, and they are</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt_*_amd64.deb</span><br><span class="line">libapt-pkg-dev_*_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>this installation would need zliblg-dev, which could be found in <a class="link"   target="_blank" rel="noopener" href="https://mirrors.163.com/debian/pool/main/z/zlib/" >https://mirrors.163.com/debian/pool/main/z/zlib/<i class="fas fa-external-link-alt"></i></a>. The version needed should be noticed.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.163.com/debian/pool/main/z/zlib/zlib1g-dev_1.2.13.dfsg-1_amd64.deb</span><br><span class="line"><span class="comment">## problem was raised</span></span><br><span class="line">admin@truenas[~/kernel]$ sudo dpkg -i zlib1g-dev_1.2.13.dfsg-1_amd64.deb                                        </span><br><span class="line">Selecting previously unselected package zlib1g-dev:amd64.</span><br><span class="line">(Reading database ... 115072 files and directories currently installed.)</span><br><span class="line">Preparing to unpack zlib1g-dev_1.2.13.dfsg-1_amd64.deb ...</span><br><span class="line">Unpacking zlib1g-dev:amd64 (1:1.2.13.dfsg-1) ...</span><br><span class="line">dpkg: dependency problems prevent configuration of zlib1g-dev:amd64:</span><br><span class="line"> zlib1g-dev:amd64 depends on zlib1g (= 1:1.2.13.dfsg-1); however:</span><br><span class="line">  Version of zlib1g:amd64 on system is 1:1.2.11.dfsg-2+deb11u2.</span><br><span class="line"></span><br><span class="line">dpkg: error processing package zlib1g-dev:amd64 (--install):</span><br><span class="line"> dependency problems - leaving unconfigured</span><br><span class="line">Processing triggers <span class="keyword">for</span> man-db (2.9.4-2) ...</span><br><span class="line">Errors were encountered <span class="keyword">while</span> processing:</span><br><span class="line"> zlib1g-dev:amd64</span><br><span class="line"><span class="comment">## therefore, wget a correct version of 1.2.11.dfsg-2+deb11u2</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-unlock the `apt-get`">1. unlock the <code>apt-get</code></h4>
+<p>actually, not need to reinstall <code>apt-get</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">admin@truenas[~]$ ll /usr/bin/apt-get</span><br><span class="line">-rw-r--r-- 1 root 47416 Jun 10  2021 /usr/bin/apt-get</span><br><span class="line">admin@truenas[~]$ sudo <span class="built_in">chmod</span> 744 /usr/bin/apt-get </span><br><span class="line">admin@truenas[~]$ ll /usr/bin/apt-get            </span><br><span class="line">-rwxr--r-- 1 root 47416 Jun 10  2021 /usr/bin/apt-get*</span><br></pre></td></tr></table></figure>
+<p>using a new sources.list</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line">sudo <span class="built_in">mv</span> sources.list sources.list.old</span><br><span class="line">sudo wget https://dataset.yangyq.net/sources.list</span><br><span class="line">sudo <span class="built_in">chmod</span> 744 /usr/bin/apt-key</span><br></pre></td></tr></table></figure>
+<p>now, it will stll fail to <code>sudo apt-get update</code>. Reinstall apt (which should be a correct version)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">wget http://mirrors.163.com/debian/pool/main/a/apt/apt_2.2.4_amd64.deb</span><br><span class="line">sudo dpkg -i apt_2.2.4_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>Now will be successful to <code>sudo apt-get update</code>.</p>
+<h4 id="2-build modules by using source code of linux kernel (failed to do it)">2. build modules by using source code of linux kernel (failed to do it)</h4>
+<p>In <a class="link"   target="_blank" rel="noopener" href="https://www.kernel.org/" >https://www.kernel.org/<i class="fas fa-external-link-alt"></i></a>, click <strong>browse</strong>, click <strong>summary</strong>, find the verison in <strong>Tag</strong>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/linux-5.15.79.tar.gz</span><br></pre></td></tr></table></figure>
+<p>After downloading it, configure by</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=x86 menuconfig</span><br></pre></td></tr></table></figure>
+<p>Find 6775 module in <strong>Device Drivers --&gt; Hardware Monitoring support --&gt; Platform driver for Nuvoton NCT6775F and compatibles</strong> (<a class="link"   target="_blank" rel="noopener" href="https://www.kernelconfig.io/config_sensors_nct6775?q=&amp;kernelversion=5.15.110&amp;arch=x86" >ref<i class="fas fa-external-link-alt"></i></a>).</p>
+<p>In the <code>.config</code> file, this line should be commented out</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CONFIG_SYSTEM_TRUSTED_KEYS=&quot;debian/certs/debian-uefi-certs.pem&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Then build the module by</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make modules SUBDIRS=drivers/usb/serial -j 3</span><br></pre></td></tr></table></figure>
+<p>if see <code>Additional X.509 keys for default system keyring (SYSTEM_TRUSTED_KEYS) [] (NEW)</code>, press enter (I don’t know why). Note that I do not recommend to use all cpus of 4, which will make the machine too hot.</p>
+<p>**However, I failed to <code>insmod hwmon-vid.ko</code> and then <code>insmod nct6775.ko</code>. Even force to <code>insmod -f hwmon-vid.ko</code>, I still got **</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod: ERROR: could not insert module nct6775.ko: Invalid parameters</span><br></pre></td></tr></table></figure>
+<p><strong>If everyone know why I cannot activate the module for controlling fan by pwm, please commit in my github repository, thanks soooo much!</strong></p>
+<p>A back up information</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$ sudo modinfo hwmon-vid.ko</span><br><span class="line">filename:       /usr/src/linux-5.15.79/drivers/hwmon/hwmon-vid.ko</span><br><span class="line">license:        GPL</span><br><span class="line">description:    hwmon-vid driver</span><br><span class="line">author:         Rudolf Marek &lt;r.marek@assembler.cz&gt;</span><br><span class="line">depends:</span><br><span class="line">retpoline:      Y</span><br><span class="line">intree:         Y</span><br><span class="line">name:           hwmon_vid</span><br><span class="line">vermagic:       5.15.79+truenas SMP mod_unload modversions</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$</span><br><span class="line">admin@truenas[/usr/src/linux-5.15.79/drivers/hwmon]$ sudo modinfo nct6775.ko</span><br><span class="line">filename:       /usr/src/linux-5.15.79/drivers/hwmon/nct6775.ko</span><br><span class="line">license:        GPL</span><br><span class="line">description:    Driver <span class="keyword">for</span> NCT6775F and compatible chips</span><br><span class="line">author:         Guenter Roeck &lt;linux@roeck-us.net&gt;</span><br><span class="line">depends:        hwmon-vid</span><br><span class="line">retpoline:      Y</span><br><span class="line">intree:         Y</span><br><span class="line">name:           nct6775</span><br><span class="line">vermagic:       5.15.79+truenas SMP mod_unload modversions</span><br><span class="line">parm:           force_id:Override the detected device ID (ushort)</span><br><span class="line">parm:           fan_debounce:Enable debouncing <span class="keyword">for</span> fan RPM signal (ushort)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/hardware/">#hardware</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/03/16/deal-conflict-between-latex-and-hexo/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">deal_conflict_between_latex_and_hexo</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-earlier%20attempt%20of%20unlock%20the%20%60apt-get%60"><span class="nav-text">0. earlier attempt of unlock the apt-get</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#0a-lack%20of%20nurses"><span class="nav-text">0a. Lack of nurses</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#0b-find%20correct%20version%20of%20apt%20and%20download"><span class="nav-text">0b find correct version of apt and download</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-unlock%20the%20%60apt-get%60"><span class="nav-text">1. unlock the apt-get</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-build%20modules%20by%20using%20source%20code%20of%20linux%20kernel%20(failed%20to%20do%20it)"><span class="nav-text">2. build modules by using source code of linux kernel (failed to do it)</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
