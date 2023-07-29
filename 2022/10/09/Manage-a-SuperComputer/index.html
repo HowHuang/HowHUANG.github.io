@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>355 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>376 Words</span>
         </span>
     
     
@@ -196,7 +196,9 @@
         <div class="article-content markdown-body">
             <p>This is a Centos7 machine</p>
 <h4 id="1-add users">1 Add users</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -m xx-x  <span class="comment">## -m would make sure there would be a directory in /home/</span></span><br><span class="line">passwd xx-x</span><br><span class="line"><span class="comment">## optional; add the user into the group</span></span><br><span class="line">usermod -g members xx-xx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">useradd -m xx-x  <span class="comment">## -m would make sure there would be a directory in /home/</span></span><br><span class="line">passwd xx-x</span><br><span class="line"><span class="comment">## optional</span></span><br><span class="line"><span class="comment">## create a group first</span></span><br><span class="line">groupadd members</span><br><span class="line"><span class="comment">## add the user into the group</span></span><br><span class="line">usermod -g members xx-xx</span><br></pre></td></tr></table></figure>
+<p>if there is only <code>$</code> after login for a new user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -s /bin/bash xx-xx</span><br></pre></td></tr></table></figure>
 <h4 id="2-add login information">2 Add login information</h4>
 <p>In my earier setting at Setup-a-SuperComputer, I added the things needed to be echo in /etc/profile, which typically can be done in anthor way. That is using /etc/motd, namely message of today</p>
 <p>Ref: <a class="link"   target="_blank" rel="noopener" href="https://sspai.com/post/59297#!#" >https://sspai.com/post/59297#!#<i class="fas fa-external-link-alt"></i></a></p>
