@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>124 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>127 Words</span>
         </span>
     
     
@@ -196,13 +196,16 @@
         <div class="article-content markdown-body">
             <p>Unfortunately, our server which was installed Ubuntu18 could not be touched through ssh because of unknown reasons.</p>
 <p>I found it was into tty1 and showed cable unplugged, therefore these two problems should be fixed.</p>
-<h5 id="Firstly-since-we-are-in-tty1-mode-entering-the-following-code-to-start-a-graphical-interface"><a href="#Firstly-since-we-are-in-tty1-mode-entering-the-following-code-to-start-a-graphical-interface" class="headerlink" title="Firstly, since we are in tty1 mode, entering the following code to start a graphical interface"></a>Firstly, since we are in tty1 mode, entering the following code to start a graphical interface</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
-<h5 id="Second-fixing-the-network-problem"><a href="#Second-fixing-the-network-problem" class="headerlink" title="Second, fixing the network problem"></a>Second, fixing the network problem</h5><p>I modified the <code>/etc/NetworkManager/NetworkManager.conf</code> to be</p>
+<h5 id="firstly,-since we are in tty1 mode, entering the following code to start a graphical interface">Firstly, since we are in tty1 mode, entering the following code to start a graphical interface</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
+<h5 id="second,-fixing the network problem">Second, fixing the network problem</h5>
+<p>I modified the <code>/etc/NetworkManager/NetworkManager.conf</code> to be</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[main]</span><br><span class="line">plugins=ifupdown,keyfile</span><br><span class="line"></span><br><span class="line">[ifupdown]</span><br><span class="line">managed=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[device]</span><br><span class="line">wifi.scan-rand-mac-address=no</span><br></pre></td></tr></table></figure>
 <p>The major issue is turning <code>managed=true</code>. And then, restart the network</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service network-manager restart</span><br></pre></td></tr></table></figure>
 <p>In my case, the server can <code>ping</code> the Internet websites now.</p>
-<h5 id="Third-re-installing-the-graphical-interface-for-not-being-into-the-tty1-mode"><a href="#Third-re-installing-the-graphical-interface-for-not-being-into-the-tty1-mode" class="headerlink" title="Third, re-installing the graphical interface for not being into the tty1 mode"></a>Third, re-installing the graphical interface for not being into the tty1 mode</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<h5 id="third,-re-installing the graphical interface for not being into the tty1 mode">Third, re-installing the graphical interface for not being into the tty1 mode</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -285,7 +288,7 @@
               <span>2022</span>
               -
             
-            2023&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
+            2024&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -380,7 +383,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Firstly-since-we-are-in-tty1-mode-entering-the-following-code-to-start-a-graphical-interface"><span class="nav-text">Firstly, since we are in tty1 mode, entering the following code to start a graphical interface</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Second-fixing-the-network-problem"><span class="nav-text">Second, fixing the network problem</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Third-re-installing-the-graphical-interface-for-not-being-into-the-tty1-mode"><span class="nav-text">Third, re-installing the graphical interface for not being into the tty1 mode</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#firstly,-since%20we%20are%20in%20tty1%20mode,%20entering%20the%20following%20code%20to%20start%20a%20graphical%20interface"><span class="nav-text">Firstly, since we are in tty1 mode, entering the following code to start a graphical interface</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#second,-fixing%20the%20network%20problem"><span class="nav-text">Second, fixing the network problem</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#third,-re-installing%20the%20graphical%20interface%20for%20not%20being%20into%20the%20tty1%20mode"><span class="nav-text">Third, re-installing the graphical interface for not being into the tty1 mode</span></a></li></ol>
     </div>
 </div>
         </aside>
