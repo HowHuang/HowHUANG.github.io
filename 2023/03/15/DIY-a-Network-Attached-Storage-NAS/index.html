@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>179 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>178 Words</span>
         </span>
     
     
@@ -194,12 +194,12 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="how-to calculate the power supply">How to calculate the power supply</h4>
-<p>The motherboard of J4125 needs a power supply voltage of 12V and a current that is normally 2A and could be a maximum of 3A (i.e., <span class="markdown-them-math-inline">$P_0=24\sim36\ Watts$</span>)</p>
+            <h4 id="How-to-calculate-the-power-supply"><a href="#How-to-calculate-the-power-supply" class="headerlink" title="How to calculate the power supply"></a>How to calculate the power supply</h4><p>The motherboard of J4125 needs a power supply voltage of 12V and a current that is normally 2A and could be a maximum of 3A (i.e., $P_0=24\sim36\ Watts$)</p>
 <blockquote>
 <p>The drive receives DC power (+5V or +12V) through a native SATA power connector</p>
 </blockquote>
 <p>Accordingly, we can read the Product Manual of <a class="link"   target="_blank" rel="noopener" href="https://www.seagate.com/cn/zh/support/internal-hard-drives/enterprise-hard-drives/exos-X18/" >Seagate Exos X18<i class="fas fa-external-link-alt"></i></a>,  which provides detail tests like:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -220,9 +220,9 @@
 <td>1.66</td>
 </tr>
 <tr>
-<td><s>AC (Peak DC)</s></td>
-<td><s>1.14</s></td>
-<td><s>2.58</s></td>
+<td><del>AC (Peak DC)</del></td>
+<td><del>1.14</del></td>
+<td><del>2.58</del></td>
 </tr>
 <tr>
 <td>Delayed motor start (max) DC</td>
@@ -251,8 +251,9 @@
 </tr>
 </tbody>
 </table>
-<p>With no delayed start, each Seagate Exos X18 needs a startup power of <span class="markdown-them-math-inline">$P_1=5\times0.96+12\times1.66=24.72\ Watts$</span>, with a operating power of only <span class="markdown-them-math-inline">$P_2=5\times0.35+12\times0.63=9.31\ Watts$</span></p>
-<p>So, a relatively safe scheme for Four disk NAS is using a power supply of 150 Watts (<span class="markdown-them-math-inline">$P_0+4\times P_1$</span>)</p>
+</div>
+<p>With no delayed start, each Seagate Exos X18 needs a startup power of $P_1=5\times0.96+12\times1.66=24.72\ Watts$, with a operating power of only $P_2=5\times0.35+12\times0.63=9.31\ Watts$</p>
+<p>So, a relatively safe scheme for Four disk NAS is using a power supply of 150 Watts ($P_0+4\times P_1$)</p>
 
         </div>
 
@@ -430,7 +431,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-to%20calculate%20the%20power%20supply"><span class="nav-text">How to calculate the power supply</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-calculate-the-power-supply"><span class="nav-text">How to calculate the power supply</span></a></li></ol>
     </div>
 </div>
         </aside>

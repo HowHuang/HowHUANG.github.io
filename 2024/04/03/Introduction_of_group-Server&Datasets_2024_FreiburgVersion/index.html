@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>180 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>178 Words</span>
         </span>
     
     
@@ -194,41 +194,41 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="1-login">1 Login</h4>
-<p><strong>Why do we need servers?</strong></p>
+            <h4 id="1-Login"><a href="#1-Login" class="headerlink" title="1 Login"></a>1 Login</h4><p><strong>Why do we need servers?</strong> </p>
 <p>Stable and long-time running; Powerful computing (more CPUs or GPUs); Large storage with shared datasets; …</p>
 <p><strong>What are the tasks?</strong></p>
-<p>Run physics-based or machine/deep models; Do analysis on observations; Draw scientific figures; …</p>
+<p>Run physics-based or machine/deep learning models; Do analysis on observations; Draw scientific figures; …</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@10.8.xx.xx</span><br></pre></td></tr></table></figure>
 <p>This is an linux system with a release version of ubuntu22.04</p>
 <p>(you can only log in when you connect to the inner network of the university)</p>
-<h4 id="2-structure">2 Structure</h4>
-<p>Linux’s directory is like a tree:</p>
+<h4 id="2-Structure"><a href="#2-Structure" class="headerlink" title="2 Structure"></a>2 Structure</h4><p>Linux’s directory is like a tree:</p>
 <p><img src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg" alt="fig1"></p>
 <p>There are three folders that should be known:</p>
 <ol>
-<li>Your home directory: /home/username</li>
+<li>Your home directory: /home/username </li>
 </ol>
-<p>​			this is the location when you login in (<font color=red><strong>NOT store data here</strong></font>)</p>
+<p>​            this is the location when you login in (<font color=red><strong>NOT store data here</strong></font>)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>, <span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>Your scratch directory: /mnt/share/scratch</li>
 </ol>
-<p>​			to store personal scripts/data</p>
+<p>​            to store personal scripts/data</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scratch</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>Our data directory: /mnt/share/data</li>
+<ol>
+<li>Our data directory: /mnt/share/data  </li>
 </ol>
-<p>​			to store the prepared shared datasets</p>
+<p>​            to store the prepared shared datasets</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
 <p>which look like:</p>
 <p><img src="fig.png" alt=""></p>
-<h4 id="3-basic commands on linux">3 Basic Commands on Linux</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
-<p><font color=blue>tip: using tab would be helpful</font></p>
-<p><font color=red>Be careful of using rm -rf *!!</font></p>
-<h4 id="4-data storage documents">4 Data Storage Documents</h4>
-<p>—&gt; going to our google document</p>
+<h4 id="3-Basic-Commands-on-Linux"><a href="#3-Basic-Commands-on-Linux" class="headerlink" title="3 Basic Commands on Linux"></a>3 Basic Commands on Linux</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
+<font color=blue>tip: using tab would be helpful</font>
+
+<font color=red>Be careful of using rm -rf *!!</font>
+
+
+
+<h4 id="4-Data-Storage-Documents"><a href="#4-Data-Storage-Documents" class="headerlink" title="4 Data Storage Documents"></a>4 Data Storage Documents</h4><p>—-&gt; going to our google document</p>
 
         </div>
 
@@ -391,7 +391,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-structure"><span class="nav-text">2 Structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-basic%20commands%20on%20linux"><span class="nav-text">3 Basic Commands on Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-data%20storage%20documents"><span class="nav-text">4 Data Storage Documents</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Structure"><span class="nav-text">2 Structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Basic-Commands-on-Linux"><span class="nav-text">3 Basic Commands on Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Data-Storage-Documents"><span class="nav-text">4 Data Storage Documents</span></a></li></ol>
     </div>
 </div>
         </aside>

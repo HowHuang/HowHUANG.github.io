@@ -196,8 +196,7 @@
         <div class="article-content markdown-body">
             <p>This is a Centos7 machine</p>
 <p>The error raised by:</p>
-<h4 id="ifort:-/lib64/libstdc++so.6: version `glibcxx_3.4.21' not found (required by ifort)">ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)</h4>
-<p>There seems two ways to solve it, according to <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7" >https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7<i class="fas fa-external-link-alt"></i></a>.</p>
+<h4 id="ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort"><a href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort" class="headerlink" title="ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)"></a>ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)</h4><p>There seems two ways to solve it, according to <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7" >https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7<i class="fas fa-external-link-alt"></i></a>.</p>
 <p>One way is to build a higher version gcc for providing a <code>libstdc++.so.6</code> and <code>libstdc++.so.6.0.24</code>; The second way is to install gcc by conda and then modify <code>LD_LIBRARY_PATH</code>.</p>
 <p>I try the first way by installing gcc-8.3.0, referring to <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/NanZhiHan/p/11010130.html" >https://www.cnblogs.com/NanZhiHan/p/11010130.html<i class="fas fa-external-link-alt"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44575514/article/details/105842062" >https://blog.csdn.net/weixin_44575514/article/details/105842062<i class="fas fa-external-link-alt"></i></a>. That is:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz</span><br><span class="line">tar zxf gcc-8.3.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> gcc-8.3.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure>
@@ -386,7 +385,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ifort:-/lib64/libstdc++so.6: version `glibcxx_3.4.21' not found (required by ifort)"><span class="nav-text">ifort: &#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found (required by ifort)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21%E2%80%99-not-found-required-by-ifort"><span class="nav-text">ifort: &#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found (required by ifort)</span></a></li></ol>
     </div>
 </div>
         </aside>
