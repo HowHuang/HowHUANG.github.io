@@ -9,7 +9,7 @@
     
     <title>
         
-            Introduction_of_group-Server&amp;Datasets_2024_FreiburgVersion |
+            LC_CTYPE_warning |
         
         Haha
     </title>
@@ -136,7 +136,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Introduction_of_group-Server&amp;Datasets_2024_FreiburgVersion</span>
+            <span class="title-hover-animation">LC_CTYPE_warning</span>
         </div>
 
         
@@ -153,8 +153,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2024-04-03 11:57:38</span>
-        <span class="mobile">2024-04-03 11:57</span>
+        <span class="pc">2024-04-06 09:26:00</span>
+        <span class="mobile">2024-04-06 09:26</span>
     </span>
     
     
@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>181 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>67 Words</span>
         </span>
     
     
@@ -194,41 +194,14 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="1-login">1 Login</h4>
-<p><strong>Why do we need servers?</strong></p>
-<p>Stable and long-time running; Powerful computing (more CPUs or GPUs); Large storage with shared datasets; …</p>
-<p><strong>What are the tasks?</strong></p>
-<p>Run physics-based or machine/deep learning models; Do analysis on observations; Draw scientific figures; …</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@10.8.xx.xx</span><br></pre></td></tr></table></figure>
-<p>This is an linux system with a release version of ubuntu22.04</p>
-<p>(you can only log in when you connect to the inner network of the university)</p>
-<h4 id="2-structure">2 Structure</h4>
-<p>Linux’s directory is like a tree:</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg" alt="fig1"></p>
-<p>There are three folders that should be known:</p>
-<ol>
-<li>Your home directory: /home/username</li>
-</ol>
-<p>​			this is the location when you login in (<font color=red><strong>NOT store data here</strong></font>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>, <span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Your scratch directory: /mnt/share/scratch</li>
-</ol>
-<p>​			to store personal scripts/data</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scratch</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>Our data directory: /mnt/share/data</li>
-</ol>
-<p>​			to store the prepared shared datasets</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
-<p>which look like:</p>
-<p><img src="fig.png" alt=""></p>
-<h4 id="3-basic commands on linux">3 Basic Commands on Linux</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
-<p><font color=blue>tip: using tab would be helpful</font></p>
-<p><font color=red>Be careful of using rm -rf *!!</font></p>
-<h4 id="4-data storage documents">4 Data Storage Documents</h4>
-<p>—&gt; going to our google document</p>
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory</span><br></pre></td></tr></table></figure>
+<h4 id="what-is locale?">What is locale?</h4>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables" >https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="how-to mange it well?">How to mange it well?</h4>
+<p>following <a class="link"   target="_blank" rel="noopener" href="https://gist.github.com/nicks9188/a19f39d62780055a68c22b89a9799c25?permalink_comment_id=4191284" >https://gist.github.com/nicks9188/a19f39d62780055a68c22b89a9799c25?permalink_comment_id=4191284<i class="fas fa-external-link-alt"></i></a>, <code>vi /etc/environment</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.utf-8</span><br><span class="line">LC_ALL=en_US.utf-8</span><br></pre></td></tr></table></figure>
+<p>then</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localedef -i en_US -f UTF-8 en_US.UTF-8</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -258,29 +231,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2024/04/06/LC-CTYPE-warning/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">LC_CTYPE_warning</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2023/09/24/Manage-a-DIYnas-on-truenas-scale/"
+                           href="/2024/04/03/Introduction_of_group-Server&amp;Datasets_2024_FreiburgVersion/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Manage_a_DIYnas_on-truenas-scale</span>
+                                <span class="post-nav-title-item">Introduction_of_group-Server&amp;Datasets_2024_FreiburgVersion</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -406,7 +364,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-structure"><span class="nav-text">2 Structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-basic%20commands%20on%20linux"><span class="nav-text">3 Basic Commands on Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-data%20storage%20documents"><span class="nav-text">4 Data Storage Documents</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is%20locale?"><span class="nav-text">What is locale?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-to%20mange%20it%20well?"><span class="nav-text">How to mange it well?</span></a></li></ol>
     </div>
 </div>
         </aside>

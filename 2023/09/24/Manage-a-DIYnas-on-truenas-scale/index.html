@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>369 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>367 Words</span>
         </span>
     
     
@@ -195,12 +195,14 @@
 
         <div class="article-content markdown-body">
             <p>In my nas with turenas-scale 22.12.2, I would like to create a dataset to be mounted on a MacOS/linux machine. Two connection ways could be chosen: NFS and SMB.</p>
-<p>I first tried to use NFS since it is marked with UNIX and seems more suitable for mac or linux. In this way, I turned on <code>UNIX (NFS) Shares</code> on the truenas scale system, and then mounted it on MacOS. However, there would be <code>RPC failed:: RPC: Program/version mismatch</code>, which is the same as <a class="link"   target="_blank" rel="noopener" href="https://www.truenas.com/community/threads/nfs-issue-on-truenas-scale-22-02-0.99926/#:~:text=%281%29%20rpc.statd%20not%20running.%20You%20can%20start%20by,NFS%20service.%20%60midclt%20call%20nfs.update%20%27%20%7B%22allow_nonroot%22%3A%20true%7D%27%60" >NFS Issue on TrueNAS-SCALE-22.02.0<i class="fas fa-external-link-alt"></i></a>. To solve this problem, I tried the commands of <code>rpc.statd</code> and <code>midclt call nfs.update &#39;&#123;&quot;allow_nonroot&quot;: true&#125;&#39;</code>, but after calling these commands, the problem still occured.</p>
+<p>I first tried to use NFS since it is marked with UNIX and seems more suitable for mac or linux. In this way, I turned on <code>UNIX (NFS) Shares</code> on the truenas scale system, and then mounted it on MacOS. However, there would be <code>RPC failed:: RPC: Program/version mismatch</code>, which is the same as <a class="link"   target="_blank" rel="noopener" href="https://www.truenas.com/community/threads/nfs-issue-on-truenas-scale-22-02-0.99926/#:~:text=%281%29%20rpc.statd%20not%20running.%20You%20can%20start%20by,NFS%20service.%20%60midclt%20call%20nfs.update%20%27%20%7B%22allow_nonroot%22%3A%20true%7D%27%60" >NFS Issue on TrueNAS-SCALE-22.02.0<i class="fas fa-external-link-alt"></i></a>. To solve this problem, I tried the commands of <code>rpc.statd</code> and <code>midclt call nfs.update '&#123;&quot;allow_nonroot&quot;: true&#125;'</code>, but after calling these commands, the problem still occured.</p>
 <p>Then, I saw an idea that <a class="link"   target="_blank" rel="noopener" href="https://www.truenas.com/community/threads/nfs-share-on-macos-truenas-scale-22-02-1.100964/" >it is recommended to use SMBv3 shares with recent MacOS releases<i class="fas fa-external-link-alt"></i></a>, so I tried to use SMB as the following.</p>
 <ol>
-<li><p>Turn on <code>Windows (SMB) Shares</code> on the truenas scale system. The <code>Purpose</code> could be <code>Default share parameters</code>, and login users (which can be created in <code>Credentials-Local Users</code>) should have permissions for the datasets chosen to be shared.</p>
+<li>
+<p>Turn on <code>Windows (SMB) Shares</code> on the truenas scale system. The <code>Purpose</code> could be <code>Default share parameters</code>, and login users (which can be created in <code>Credentials-Local Users</code>) should have permissions for the datasets chosen to be shared.</p>
 </li>
-<li><p>An easy way for mac to connect the SMB datasets is use folder app. </p>
+<li>
+<p>An easy way for mac to connect the SMB datasets is use folder app.</p>
 <p>But for linux, I refered to <a class="link"   target="_blank" rel="noopener" href="https://help.aliyun.com/zh/nas/user-guide/mount-an-smb-file-system-on-a-linux-ecs-instance" >Linux系统挂载SMB文件系统<i class="fas fa-external-link-alt"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26763026" >Linux 上挂载 Samba（Windows &amp; macOS 共享文件夹）的正确姿势<i class="fas fa-external-link-alt"></i></a>.</p>
 </li>
 </ol>
