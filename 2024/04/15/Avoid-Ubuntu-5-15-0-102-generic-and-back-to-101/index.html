@@ -9,7 +9,7 @@
     
     <title>
         
-            upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found |
+            Avoid_Ubuntu-5.15.0-102-generic_and_back_to_101 |
         
         Haha
     </title>
@@ -136,7 +136,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found</span>
+            <span class="title-hover-animation">Avoid_Ubuntu-5.15.0-102-generic_and_back_to_101</span>
         </div>
 
         
@@ -153,8 +153,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2023-03-07 22:09:52</span>
-        <span class="mobile">2023-03-07 22:09</span>
+        <span class="pc">2024-04-15 11:31:49</span>
+        <span class="mobile">2024-04-15 11:31</span>
     </span>
     
     
@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>618 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>527 Words</span>
         </span>
     
     
@@ -194,20 +194,23 @@
         
 
         <div class="article-content markdown-body">
-            <p>This is a Centos7 machine</p>
-<p>The error raised by:</p>
-<h4 id="ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort"><a href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort" class="headerlink" title="ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)"></a>ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)</h4><p>There seems two ways to solve it, according to <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7" >https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7<i class="fas fa-external-link-alt"></i></a>.</p>
-<p>One way is to build a higher version gcc for providing a <code>libstdc++.so.6</code> and <code>libstdc++.so.6.0.24</code>; The second way is to install gcc by conda and then modify <code>LD_LIBRARY_PATH</code>.</p>
-<p>I try the first way by installing gcc-8.3.0, referring to <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/NanZhiHan/p/11010130.html" >https://www.cnblogs.com/NanZhiHan/p/11010130.html<i class="fas fa-external-link-alt"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44575514/article/details/105842062" >https://blog.csdn.net/weixin_44575514/article/details/105842062<i class="fas fa-external-link-alt"></i></a>. That is:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz</span><br><span class="line">tar zxf gcc-8.3.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> gcc-8.3.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure>
-<p>which is to download gmp, mpfr, mpc, isl. If the process is slow, 1) the <code>base_url</code> in <code>./contrib/download_prerequisites</code> can be modified from <code>ftp://gcc.gnu.org/pub/gcc/infrastructure/</code> to <code>http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/infrastructure/</code>; or 2) download the four packages from <a class="link"   target="_blank" rel="noopener" href="https://gcc.gnu.org/pub/gcc/infrastructure/" >https://gcc.gnu.org/pub/gcc/infrastructure/<i class="fas fa-external-link-alt"></i></a> by another pc and then move them to the server.</p>
-<p>After receive the following,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gmp-6.1.0.tar.bz2: 确定</span><br><span class="line">mpfr-3.1.4.tar.bz2: 确定</span><br><span class="line">mpc-1.0.3.tar.gz: 确定</span><br><span class="line">isl-0.18.tar.bz2: 确定</span><br><span class="line">All prerequisites downloaded successfully.</span><br></pre></td></tr></table></figure>
-<p>going to the next step for an out-of-source build</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../configure --prefix=/usr/local/gcc --enable-languages=c,c++ --disable-multilib</span><br><span class="line">make -j</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line"></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/gcc /usr/bin/gcc_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/gcc /usr/bin/gcc</span><br><span class="line"><span class="built_in">mv</span> /usr/bin/g++ /usr/bin/g++_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/g++ /usr/bin/g++</span><br><span class="line"></span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br></pre></td></tr></table></figure>
-<p>Finally, replace the so library</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/gcc/lib64</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6_bak</span><br><span class="line"><span class="built_in">cp</span> libstdc++.so.6.0.25 /usr/lib64/libstdc++.so.6</span><br></pre></td></tr></table></figure>
+            <h4 id="1-Background"><a href="#1-Background" class="headerlink" title="1 Background"></a>1 Background</h4><p>The server with a release version of ubuntu22.04 was upgraded to linux-image-5.15.0-102-generic automatically. However, this version has bugs with mounting drives. For instance, calling <code>df -h</code> would cause</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span>: /mnt/share/data: Resource temporarily unavailable</span><br><span class="line">Filesystem                         Size  Used Avail Use% Mounted on</span><br><span class="line">tmpfs                               51G  3.6M   51G   1% /run</span><br><span class="line">/dev/mapper/ubuntu--vg-ubuntu--lv   98G   87G  6.1G  94% /</span><br><span class="line">tmpfs                              252G     0  252G   0% /dev/shm</span><br><span class="line">tmpfs                              5.0M     0  5.0M   0% /run/lock</span><br><span class="line">/dev/sda2                          2.0G  252M  1.6G  14% /boot</span><br><span class="line">/dev/sda1                          1.1G  6.1M  1.1G   1% /boot/efi</span><br><span class="line">tmpfs                               51G  8.0K   51G   1% /run/user/1000</span><br></pre></td></tr></table></figure>
+<p>even though I could still go into the mounted drives through <code>/mnt/share/data</code>. Nevertheless, when running the code to write data on the mounted drives, error like <code>esource temporarily unavailable</code> would also occur.</p>
+<h4 id="2-Temporal-solution"><a href="#2-Temporal-solution" class="headerlink" title="2 Temporal solution"></a>2 Temporal solution</h4><p>This issue seems to also happen to other users, see <a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/" >here<i class="fas fa-external-link-alt"></i></a>, where they also provided methods to roll back to linux-image-5.15.0-101-generic and avoid the upgrade to linux-image-5.15.0-102-generic.</p>
+<h5 id="2-1-see-the-version"><a href="#2-1-see-the-version" class="headerlink" title="2.1 see the version"></a>2.1 see the version</h5><p>After login through <code>ssh</code>, there would be the running version on the top, like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-102-generic x86_64)</span><br></pre></td></tr></table></figure>
+<p>calling the function to see which version has been on the sever,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base) sysadmin@quercus:~$ dpkg --list | grep linux-image</span><br><span class="line">ii  linux-image-5.15.0-100-generic         5.15.0-100.110                          amd64        Signed kernel image generic</span><br><span class="line">rc  linux-image-5.15.0-101-generic         5.15.0-101.111                          amd64        Signed kernel image generic</span><br><span class="line">ii  linux-image-5.15.0-102-generic         5.15.0-102.112                          amd64        Signed kernel image generic</span><br></pre></td></tr></table></figure>
+<p>where <code>ii</code> means “It should be installed and it is installed”, and <code>rc</code> means “It’s removed/uninstalled and its configuration files are still there” (<a class="link"   target="_blank" rel="noopener" href="https://askubuntu.com/questions/18804/what-do-the-various-dpkg-flags-like-ii-rc-mean" >ref<i class="fas fa-external-link-alt"></i></a>).</p>
+<h5 id="2-2-install-the-101-and-clean-the-102"><a href="#2-2-install-the-101-and-clean-the-102" class="headerlink" title="2.2 install the 101 and clean the 102"></a>2.2 install the 101 and clean the 102</h5><p>Do them by <code>apt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image-5.15.0-101-generic linux-headers-5.15.0-101-generic linux-modules-5.15.0-101-generic</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge linux-image-5.15.0-102-generic linux-headers-5.15.0-102-generic linux-modules-5.15.0-102-generic</span><br></pre></td></tr></table></figure>
+<p>and update booting files</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<p>Attention: if I did not clean <code>linux-modules-5.15.0-102-generic</code>, there would still be 102 in the boot</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(base) sysadmin@quercus:~$ sudo update-grub</span><br><span class="line">Sourcing file `/etc/default/grub<span class="string">&#x27;</span></span><br><span class="line"><span class="string">Sourcing file `/etc/default/grub.d/init-select.cfg&#x27;</span></span><br><span class="line">Generating grub configuration file ...</span><br><span class="line">Found linux image: /boot/vmlinuz-5.15.0-102-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-5.15.0-102-generic</span><br><span class="line">Found linux image: /boot/vmlinuz-5.15.0-101-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-5.15.0-101-generic</span><br><span class="line">Warning: os-prober will not be executed to detect other bootable partitions.</span><br><span class="line">Systems on them will not be added to the GRUB boot configuration.</span><br><span class="line">Check GRUB_DISABLE_OS_PROBER documentation entry.</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>which would make me still enter 102 after rebooting, but I could not actually enter 102 because the linux-image of 102 had been cleaned and therefore system halted.</p>
 
         </div>
 
@@ -237,29 +240,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2023/03/08/build-modpath7-on-Linux/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">build_modpath7_on-Linux</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2023/02/05/fail2load-rjags-on-Mac/"
+                           href="/2024/04/08/Install-cdo/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">fail2load_rjags_on-Mac</span>
+                                <span class="post-nav-title-item">Install_cdo</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -385,7 +373,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21%E2%80%99-not-found-required-by-ifort"><span class="nav-text">ifort: &#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found (required by ifort)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Background"><span class="nav-text">1 Background</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Temporal-solution"><span class="nav-text">2 Temporal solution</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-see-the-version"><span class="nav-text">2.1 see the version</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-install-the-101-and-clean-the-102"><span class="nav-text">2.2 install the 101 and clean the 102</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
