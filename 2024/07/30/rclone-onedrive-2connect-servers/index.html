@@ -9,7 +9,7 @@
     
     <title>
         
-            upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found |
+            rclone_onedrive_2connect-servers |
         
         Haha
     </title>
@@ -136,7 +136,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">upgrade-gcc_on-Centos7_for-GLIBCXX_3.4.21-not-found</span>
+            <span class="title-hover-animation">rclone_onedrive_2connect-servers</span>
         </div>
 
         
@@ -153,8 +153,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2023-03-07 22:09:52</span>
-        <span class="mobile">2023-03-07 22:09</span>
+        <span class="pc">2024-07-30 16:56:14</span>
+        <span class="mobile">2024-07-30 16:56</span>
     </span>
     
     
@@ -173,12 +173,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>618 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>220 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -194,20 +194,30 @@
         
 
         <div class="article-content markdown-body">
-            <p>This is a Centos7 machine</p>
-<p>The error raised by:</p>
-<h4 id="ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort"><a href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21’-not-found-required-by-ifort" class="headerlink" title="ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)"></a>ifort: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found (required by ifort)</h4><p>There seems two ways to solve it, according to <a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7" >https://stackoverflow.com/questions/44205687/glibcxx-3-4-21-not-found-on-centos-7<i class="fas fa-external-link-alt"></i></a>.</p>
-<p>One way is to build a higher version gcc for providing a <code>libstdc++.so.6</code> and <code>libstdc++.so.6.0.24</code>; The second way is to install gcc by conda and then modify <code>LD_LIBRARY_PATH</code>.</p>
-<p>I try the first way by installing gcc-8.3.0, referring to <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/NanZhiHan/p/11010130.html" >https://www.cnblogs.com/NanZhiHan/p/11010130.html<i class="fas fa-external-link-alt"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44575514/article/details/105842062" >https://blog.csdn.net/weixin_44575514/article/details/105842062<i class="fas fa-external-link-alt"></i></a>. That is:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz</span><br><span class="line">tar zxf gcc-8.3.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> gcc-8.3.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure>
-<p>which is to download gmp, mpfr, mpc, isl. If the process is slow, 1) the <code>base_url</code> in <code>./contrib/download_prerequisites</code> can be modified from <code>ftp://gcc.gnu.org/pub/gcc/infrastructure/</code> to <code>http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/infrastructure/</code>; or 2) download the four packages from <a class="link"   target="_blank" rel="noopener" href="https://gcc.gnu.org/pub/gcc/infrastructure/" >https://gcc.gnu.org/pub/gcc/infrastructure/<i class="fas fa-external-link-alt"></i></a> by another pc and then move them to the server.</p>
-<p>After receive the following,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gmp-6.1.0.tar.bz2: 确定</span><br><span class="line">mpfr-3.1.4.tar.bz2: 确定</span><br><span class="line">mpc-1.0.3.tar.gz: 确定</span><br><span class="line">isl-0.18.tar.bz2: 确定</span><br><span class="line">All prerequisites downloaded successfully.</span><br></pre></td></tr></table></figure>
-<p>going to the next step for an out-of-source build</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../configure --prefix=/usr/local/gcc --enable-languages=c,c++ --disable-multilib</span><br><span class="line">make -j</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)</span><br><span class="line">Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line"></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/gcc /usr/bin/gcc_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/gcc /usr/bin/gcc</span><br><span class="line"><span class="built_in">mv</span> /usr/bin/g++ /usr/bin/g++_old_4.8.5</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/gcc/bin/g++ /usr/bin/g++</span><br><span class="line"></span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># gcc --version</span></span><br><span class="line">gcc (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br><span class="line">(base) [xx@xxxx build]<span class="comment"># g++ --version</span></span><br><span class="line">g++ (GCC) 8.3.0</span><br><span class="line">Copyright © 2018 Free Software Foundation, Inc.</span><br><span class="line">本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；</span><br><span class="line">包括没有适销性和某一专用目的下的适用性担保。</span><br></pre></td></tr></table></figure>
-<p>Finally, replace the so library</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/gcc/lib64</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6_bak</span><br><span class="line"><span class="built_in">cp</span> libstdc++.so.6.0.25 /usr/lib64/libstdc++.so.6</span><br></pre></td></tr></table></figure>
+            <h4 id="Install-rclone-and-config-onedrive-on-the-server"><a href="#Install-rclone-and-config-onedrive-on-the-server" class="headerlink" title="Install rclone and config onedrive on the server"></a>Install rclone and config onedrive on the server</h4><ol>
+<li>Install by entering (<a class="link"   target="_blank" rel="noopener" href="https://rclone.org/downloads/" >https://rclone.org/downloads/<i class="fas fa-external-link-alt"></i></a>):</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -v ; curl https://rclone.org/install.sh | sudo bash</span><br></pre></td></tr></table></figure>
+<p>if the server has no web site browser, entering on the laptop (which also needs to be installed rclone):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone authorize <span class="string">&quot;onedrive&quot;</span></span><br></pre></td></tr></table></figure>
+<p>copy the returned token, which looks like <code>&#123;&quot;access_token&quot;:&quot;xxxxxx&quot;&#125;</code></p>
+<ol>
+<li>Config onedrive on the server by following <a class="link"   target="_blank" rel="noopener" href="https://rclone.org/webdav/" >https://rclone.org/webdav/<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p>run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone config</span><br></pre></td></tr></table></figure>
+<p>where the <code>Client ID</code>and <code>Client Secret</code> can just press enter without typing any words; the national cloud region for OneDrive should choose Microsoft Cloud Global (“global”); the advanced config just choose n; the config_token paste the token from step 1.</p>
+<p>after installation and configuration, use</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone <span class="built_in">ls</span> remote:</span><br></pre></td></tr></table></figure>
+<p>to test if the connection work well</p>
+<h4 id="Sync-data-to-onedrive"><a href="#Sync-data-to-onedrive" class="headerlink" title="Sync data to onedrive"></a>Sync data to onedrive</h4><p>For pushing data into onedrive,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone <span class="built_in">sync</span> local_folder/file remote:DESTINATION -P</span><br></pre></td></tr></table></figure>
+<p>For pulling data from onedrive</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone <span class="built_in">sync</span> remote:SOURCE local_folder/file -P</span><br></pre></td></tr></table></figure>
+<p>where <code>-P</code>/<code>--progress</code> flag is to view real-time transfer statistics</p>
+<p>Further information could be found in <a class="link"   target="_blank" rel="noopener" href="https://rclone.org/commands/rclone_sync/" >https://rclone.org/commands/rclone_sync/<i class="fas fa-external-link-alt"></i></a>, </p>
+<p>and seems there are some important flags useful for most commands.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-n, --dry-run         Do a trial run with no permanent changes</span><br><span class="line">-i, --interactive     Enable interactive mode</span><br><span class="line">-v, --verbose count   Print lots more stuff (repeat <span class="keyword">for</span> more)</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -237,29 +247,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2023/03/08/build-modpath7-on-Linux/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">build_modpath7_on-Linux</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2023/02/05/fail2load-rjags-on-Mac/"
+                           href="/2024/04/15/Avoid-Ubuntu-5-15-0-102-generic-and-back-to-101/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">fail2load_rjags_on-Mac</span>
+                                <span class="post-nav-title-item">Avoid_Ubuntu-5.15.0-102-generic_and_back_to_101</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -385,7 +380,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ifort-lib64-libstdc-so-6-version-GLIBCXX-3-4-21%E2%80%99-not-found-required-by-ifort"><span class="nav-text">ifort: &#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found (required by ifort)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-rclone-and-config-onedrive-on-the-server"><span class="nav-text">Install rclone and config onedrive on the server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sync-data-to-onedrive"><span class="nav-text">Sync data to onedrive</span></a></li></ol>
     </div>
 </div>
         </aside>
