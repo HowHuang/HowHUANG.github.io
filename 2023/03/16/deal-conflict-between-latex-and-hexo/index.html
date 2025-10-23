@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>223 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>224 Words</span>
         </span>
     
     
@@ -195,24 +195,30 @@
 
         <div class="article-content markdown-body">
             <p>Hexo has original problems on escaping characters in LaTeX, but many people provided a relatively stable solutions.</p>
-<h5 id="Reinstall-the-render-engines-of-hexo"><a href="#Reinstall-the-render-engines-of-hexo" class="headerlink" title="Reinstall the render engines of hexo"></a>Reinstall the render engines of hexo</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm uninstall hexo-math --save</span><br></pre></td></tr></table></figure>
+<h5 id="reinstall-the render engines of hexo">Reinstall the render engines of hexo</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm uninstall hexo-math --save</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-kramed --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure>
-<h5 id="Modify-some-code-in-the-files-within-the-blog-local-folder-node-modules"><a href="#Modify-some-code-in-the-files-within-the-blog-local-folder-node-modules" class="headerlink" title="Modify some code in the files within [the_blog_local_folder]/node_modules"></a>Modify some code in the files within <code>[the_blog_local_folder]/node_modules</code></h5><ol>
-<li><p>in <code>[the_blog_local_folder]/node_modules/hexo-renderer-kramed/lib/renderer.js</code></p>
+<h5 id="modify-some code in the files within `[the_blog_local_folder]/node_modules`">Modify some code in the files within <code>[the_blog_local_folder]/node_modules</code></h5>
+<ol>
+<li>
+<p>in <code>[the_blog_local_folder]/node_modules/hexo-renderer-kramed/lib/renderer.js</code></p>
 <p>changine</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Change inline math rule</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">formatText</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="comment">// Fit kramed&#x27;s rule: $$ + \1 + $$</span></span><br><span class="line">    <span class="keyword">return</span> text.<span class="title function_">replace</span>(<span class="regexp">/`\$(.*?)\$`/g</span>, <span class="string">&#x27;$$$$$1$$$$&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>to be </p>
+<p>to be</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Change inline math rule</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">formatText</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>in <code>[the_blog_local_folder]/node_modules/kramed/lib/rules/inline.js</code></p>
+<li>
+<p>in <code>[the_blog_local_folder]/node_modules/kramed/lib/rules/inline.js</code></p>
 <p>changing lines of escape and em</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"><span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>in <code>[the_blog_local_folder]/node_modules/hexo-renderer-mathjax/mathjax.html</code></p>
+<li>
+<p>in <code>[the_blog_local_folder]/node_modules/hexo-renderer-mathjax/mathjax.html</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>the url is referring to <a class="link"   target="_blank" rel="noopener" href="https://cdnjs.com/libraries/mathjax/2.7.9" >https://cdnjs.com/libraries/mathjax/2.7.9<i class="fas fa-external-link-alt"></i></a></p>
 </li>
-<li><p>in the theme’s <code>_config.yml_</code></p>
+<li>
+<p>in the theme’s <code>_config.yml_</code></p>
 <p>adding the setting to activate mathjax</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax</span>:</span><br><span class="line">  <span class="attr">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="attr">per_page</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>where per_page=true means every post will be auto rendered by mathjax, while per_page=false means every post should set a <code>mathjax: true</code> in its head lines</p>
@@ -300,7 +306,7 @@
               <span>2022</span>
               -
             
-            2024&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
+            2025&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -395,7 +401,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Reinstall-the-render-engines-of-hexo"><span class="nav-text">Reinstall the render engines of hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Modify-some-code-in-the-files-within-the-blog-local-folder-node-modules"><span class="nav-text">Modify some code in the files within [the_blog_local_folder]&#x2F;node_modules</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#reinstall-the%20render%20engines%20of%20hexo"><span class="nav-text">Reinstall the render engines of hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#modify-some%20code%20in%20the%20files%20within%20%60%5Bthe_blog_local_folder%5D/node_modules%60"><span class="nav-text">Modify some code in the files within [the_blog_local_folder]&#x2F;node_modules</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -462,20 +468,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

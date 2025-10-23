@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>348 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>355 Words</span>
         </span>
     
     
@@ -194,25 +194,23 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="1-Login"><a href="#1-Login" class="headerlink" title="1 Login"></a>1 Login</h4><p>(introduce linux here)</p>
+            <h4 id="1-login">1 Login</h4>
+<p>(introduce linux here)</p>
 <p>Why we need servers? Stable and long-time running; Powerful computing</p>
 <p>What are your tasks? Draw scientific figures, run hydrological or hydrometeorological or machine/deep learning models</p>
 <p>Which one do you need, cpu or gpu platform?</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@172.18.31.xx</span><br></pre></td></tr></table></figure>
 <p>(introduce servers here)</p>
 <p>All of our servers are on linux systems, but they are in different release versions, like ubuntu18.04, ubuntu20.04, centos7.</p>
-<h4 id="2-Basic-command-on-linux"><a href="#2-Basic-command-on-linux" class="headerlink" title="2 Basic command on linux"></a>2 Basic command on linux</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
+<h4 id="2-basic command on linux">2 Basic command on linux</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>~ or <span class="built_in">cd</span>, <span class="built_in">cd</span> /, <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">ls</span>, ll, ll -h, ll -a</span><br><span class="line"><span class="built_in">mv</span></span><br><span class="line"><span class="built_in">cp</span></span><br><span class="line"><span class="built_in">rm</span>, <span class="built_in">rm</span> -r</span><br><span class="line">rename</span><br><span class="line">grep</span><br><span class="line"><span class="built_in">wc</span></span><br><span class="line"><span class="built_in">touch</span></span><br><span class="line"><span class="built_in">mkdir</span></span><br><span class="line">vi, vim</span><br><span class="line">man</span><br><span class="line"><span class="built_in">which</span></span><br><span class="line"><span class="built_in">cat</span></span><br><span class="line">tar, unzip...</span><br></pre></td></tr></table></figure>
 <p>You should know using tab</p>
-<font color=red>Be careful using rm -rf *!!</font>
-
-
-
-<h4 id="3-Understand-your-permissions-on-the-server"><a href="#3-Understand-your-permissions-on-the-server" class="headerlink" title="3 Understand your permissions on the server"></a>3 Understand your permissions on the server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx</span><br><span class="line">421</span><br></pre></td></tr></table></figure>
-<font color=red>Be ware of the permissions of . </font>
-
-
-
-<h4 id="4-Where-to-store-your-data-and-your-code"><a href="#4-Where-to-store-your-data-and-your-code" class="headerlink" title="4 Where to store your data and your code"></a>4 Where to store your data and your code</h4><p>Linux’s directory is like a tree:</p>
+<p><font color=red>Be careful using rm -rf *!!</font></p>
+<h4 id="3-understand your permissions on the server">3 Understand your permissions on the server</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx</span><br><span class="line">421</span><br></pre></td></tr></table></figure>
+<p><font color=red>Be ware of the permissions of . </font></p>
+<h4 id="4-where to store your data and your code">4 Where to store your data and your code</h4>
+<p>Linux’s directory is like a tree:</p>
 <p><img src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg" alt="fig1"></p>
 <p>On our servers:</p>
 <p><img src="fig.png" alt=""></p>
@@ -221,14 +219,19 @@
 <p>4.3 If you need a relatively <font color=red>big space</font> to store your datasets, <font color=red>please ask the administrators first</font></p>
 <p>4.4 There is some public data on /portal3</p>
 <p><strong><font color=blue>Learn to manage your data and code, and be careful to data path</font></strong></p>
-<h4 id="5-How-to-transfer-data-between-servers"><a href="#5-How-to-transfer-data-between-servers" class="headerlink" title="5 How to transfer data between servers"></a>5 How to transfer data between servers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp, rsync</span><br></pre></td></tr></table></figure>
-<h4 id="6-Conda-is-usually-enough-for-us"><a href="#6-Conda-is-usually-enough-for-us" class="headerlink" title="6 Conda is usually enough for us"></a>6 Conda is usually enough for us</h4><p>6.1 sanctuary is good enough for most cases</p>
+<h4 id="5-how to transfer data between servers">5 How to transfer data between servers</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp, rsync</span><br></pre></td></tr></table></figure>
+<h4 id="6-conda is usually enough for us">6 Conda is usually enough for us</h4>
+<p>6.1 sanctuary is good enough for most cases</p>
 <p>6.2 ~/.conda will store your environments</p>
 <p>6.3 <code>which python</code></p>
-<h4 id="7-Access-the-remote-jupyterlab"><a href="#7-Access-the-remote-jupyterlab" class="headerlink" title="7 Access the remote jupyterlab"></a>7 Access the remote jupyterlab</h4><p>《服务器登陆Jupyterlab_4.0》</p>
-<h4 id="8-Using-Taiyi"><a href="#8-Using-Taiyi" class="headerlink" title="8 Using Taiyi"></a>8 Using Taiyi</h4><p>Ask Prof. LIU for the permission of opening an account first.</p>
+<h4 id="7-access the remote jupyterlab">7 Access the remote jupyterlab</h4>
+<p>《服务器登陆Jupyterlab_4.0》</p>
+<h4 id="8-using taiyi">8 Using Taiyi</h4>
+<p>Ask Prof. LIU for the permission of opening an account first.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@172.18.6.175</span><br></pre></td></tr></table></figure>
-<h4 id="9-Tail"><a href="#9-Tail" class="headerlink" title="9 Tail"></a>9 Tail</h4><p>9.1 <strong>Writing bug is easy, but debuging is much much more time-consuming</strong></p>
+<h4 id="9-tail">9 Tail</h4>
+<p>9.1 <strong>Writing bug is easy, but debuging is much much more time-consuming</strong></p>
 <p>9.2 <strong>You need to learn how to read the reported errors, not just copy those</strong></p>
 <p>9.3 <strong>Read the official documents patiently and carefully</strong>, because there might be useful tutorials and detailed descriptions of every function and every parameter. <strong>You can be a specailist of some packages</strong></p>
 <p>9.4 <strong>Debuging is usually a personal work</strong></p>
@@ -315,7 +318,7 @@
               <span>2022</span>
               -
             
-            2024&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
+            2025&nbsp;<i class="fa fa-hand-peace"></i>&nbsp;Hao_HUANG
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -410,7 +413,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Basic-command-on-linux"><span class="nav-text">2 Basic command on linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Understand-your-permissions-on-the-server"><span class="nav-text">3 Understand your permissions on the server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Where-to-store-your-data-and-your-code"><span class="nav-text">4 Where to store your data and your code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-How-to-transfer-data-between-servers"><span class="nav-text">5 How to transfer data between servers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Conda-is-usually-enough-for-us"><span class="nav-text">6 Conda is usually enough for us</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Access-the-remote-jupyterlab"><span class="nav-text">7 Access the remote jupyterlab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Using-Taiyi"><span class="nav-text">8 Using Taiyi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Tail"><span class="nav-text">9 Tail</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-login"><span class="nav-text">1 Login</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-basic%20command%20on%20linux"><span class="nav-text">2 Basic command on linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-understand%20your%20permissions%20on%20the%20server"><span class="nav-text">3 Understand your permissions on the server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-where%20to%20store%20your%20data%20and%20your%20code"><span class="nav-text">4 Where to store your data and your code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-how%20to%20transfer%20data%20between%20servers"><span class="nav-text">5 How to transfer data between servers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-conda%20is%20usually%20enough%20for%20us"><span class="nav-text">6 Conda is usually enough for us</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-access%20the%20remote%20jupyterlab"><span class="nav-text">7 Access the remote jupyterlab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-using%20taiyi"><span class="nav-text">8 Using Taiyi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-tail"><span class="nav-text">9 Tail</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -477,20 +480,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
