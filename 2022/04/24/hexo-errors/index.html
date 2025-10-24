@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>229 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>211 Words</span>
         </span>
     
     
@@ -194,21 +194,24 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="Error-Permission-denied-publickey-fatal-Could-not-read-from-remote-repository"><a href="#Error-Permission-denied-publickey-fatal-Could-not-read-from-remote-repository" class="headerlink" title="Error: Permission denied (publickey). fatal: Could not read from remote repository."></a>Error: Permission denied (publickey). fatal: Could not read from remote repository.</h4><p>refer to <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/1478" >https://github.com/hexojs/hexo/issues/1478<i class="fas fa-external-link-alt"></i></a></p>
+            <h4 id="error:-permission denied (publickey) fatal: could not read from remote repository.">Error: Permission denied (publickey). fatal: Could not read from remote repository.</h4>
+<p>refer to <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/1478" >https://github.com/hexojs/hexo/issues/1478<i class="fas fa-external-link-alt"></i></a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(base) xxxx@xxxx:xxxx ⍉ ➜ <span class="built_in">cat</span> INKon</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">sudo hexo clean</span><br><span class="line">sudo hexo g</span><br><span class="line">hexo d</span><br><span class="line"></span><br><span class="line"><span class="comment">#EOF</span></span><br></pre></td></tr></table></figure>
 <p>using <code>hexo d</code> instead of <code>sudo hexo d</code></p>
-<h4 id="Warning-Accessing-non-existent-property-‘column’-of-module-exports-inside-circular-dependency"><a href="#Warning-Accessing-non-existent-property-‘column’-of-module-exports-inside-circular-dependency" class="headerlink" title="Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency"></a>Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency</h4><p>refer to <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/397813964" >https://zhuanlan.zhihu.com/p/397813964<i class="fas fa-external-link-alt"></i></a>, need to update hexo-renderer-stylus:</p>
+<h4 id="warning:-accessing non-existent property 'column' of module exports inside circular dependency">Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency</h4>
+<p>refer to <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/397813964" >https://zhuanlan.zhihu.com/p/397813964<i class="fas fa-external-link-alt"></i></a>, need to update hexo-renderer-stylus:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-stylus</span><br></pre></td></tr></table></figure>
-<p>if this does not work, directly modifying <code>node_modules/nib/package.json</code>, and have a <code>yarn install</code>, which refers to <a class="link"   target="_blank" rel="noopener" href="https://github.com/LVicBlack/LVicBlack.github.io/blob/b83aa1d22002348c89244422c1d627cae359f2f7/source/_posts/hexo/%E8%A7%A3%E5%86%B3Hexo%E5%9C%A8%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACNodeJs%E6%8A%A5%E9%94%99.md" >https://github.com/LVicBlack/LVicBlack.github.io/blob/b83aa1d22002348c89244422c1d627cae359f2f7/source/_posts/hexo/%E8%A7%A3%E5%86%B3Hexo%E5%9C%A8%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACNodeJs%E6%8A%A5%E9%94%99.md<i class="fas fa-external-link-alt"></i></a></p>
-<h4 id="Cannot-show-the-image"><a href="#Cannot-show-the-image" class="headerlink" title="Cannot show the image"></a>Cannot show the image</h4><ol>
+<p>if this does not work, directly modifying <code>node_modules/nib/package.json</code>, and have a <code>yarn install</code>, which refers to <a class="link"   target="_blank" rel="noopener" href="https://github.com/LVicBlack/LVicBlack.github.io/blob/b83aa1d22002348c89244422c1d627cae359f2f7/source/_posts/hexo/%E8%A7%A3%E5%86%B3Hexo%E5%9C%A8%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACNodeJs%E6%8A%A5%E9%94%99.md" >https://github.com/LVicBlack/LVicBlack.github.io/blob/b83aa1d22002348c89244422c1d627cae359f2f7/source/_posts/hexo/解决Hexo在使用高版本NodeJs报错.md<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="cannot-show the image">Cannot show the image</h4>
+<ol>
 <li>refer to <a class="link"   target="_blank" rel="noopener" href="https://yeweimian21.github.io/2019/05/23/Hexo/Hexo-insert-image/" >https://yeweimian21.github.io/2019/05/23/Hexo/Hexo-insert-image/<i class="fas fa-external-link-alt"></i></a></li>
 </ol>
 <p>modifying the <code>post_asset_folder</code> option in hexo’s  <code>_config.yml</code> and installing hexo-asset-image</p>
-<ol>
+<ol start="2">
 <li>then refer to <a class="link"   target="_blank" rel="noopener" href="https://wangwei1237.github.io/2020/02/05/handle-the-bug-of-hexo-asset-image-plugin/" >https://wangwei1237.github.io/2020/02/05/handle-the-bug-of-hexo-asset-image-plugin/<i class="fas fa-external-link-alt"></i></a></li>
 </ol>
 <p>modifying the <code>node_modules/hexo-asset-image/index.js</code></p>
-<ol>
+<ol start="3">
 <li>Actually, usign hexo-asset-image is not a good choice, which will also rise some vulnerabilities for npm. Refer to <a class="link"   target="_blank" rel="noopener" href="https://smallsquare.github.io/Solution-to-insert-pics-in-Hexo/" >https://smallsquare.github.io/Solution-to-insert-pics-in-Hexo/<i class="fas fa-external-link-alt"></i></a>, just using <code>![](where/which.jpg)</code> works well.</li>
 </ol>
 
@@ -388,7 +391,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Error-Permission-denied-publickey-fatal-Could-not-read-from-remote-repository"><span class="nav-text">Error: Permission denied (publickey). fatal: Could not read from remote repository.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Warning-Accessing-non-existent-property-%E2%80%98column%E2%80%99-of-module-exports-inside-circular-dependency"><span class="nav-text">Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cannot-show-the-image"><span class="nav-text">Cannot show the image</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#error:-permission denied (publickey) fatal: could not read from remote repository."><span class="nav-text">Error: Permission denied (publickey). fatal: Could not read from remote repository.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#warning:-accessing non-existent property 'column' of module exports inside circular dependency"><span class="nav-text">Warning: Accessing non-existent property ‘column’ of module exports inside circular dependency</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cannot-show%20the%20image"><span class="nav-text">Cannot show the image</span></a></li></ol>
     </div>
 </div>
         </aside>
