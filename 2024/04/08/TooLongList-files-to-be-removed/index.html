@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>123 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>122 Words</span>
         </span>
     
     
@@ -194,15 +194,13 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="if-removing a super large number of files">If removing a super large number of files</h4>
-<p>I would get</p>
+            <h4 id="If-removing-a-super-large-number-of-files"><a href="#If-removing-a-super-large-number-of-files" class="headerlink" title="If removing a super large number of files"></a>If removing a super large number of files</h4><p>I would get</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: /usr/bin/rm: Argument list too long</span><br></pre></td></tr></table></figure>
 <p>In such cases, using <code>find</code> and <code>xargs</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find sm_1950to1979/ -name <span class="string">&quot;era5land_1950*.tif&quot;</span> |xargs <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find sm_1950to1979/ -name <span class="string">&quot;era5land_1950*.tif&quot;</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> &#123;&#125;  \;</span><br></pre></td></tr></table></figure>
-<h5 id="what-is the meaning of `xargs`">what is the meaning of <code>xargs</code></h5>
-<ol>
+<h5 id="what-is-the-meaning-of-xargs"><a href="#what-is-the-meaning-of-xargs" class="headerlink" title="what is the meaning of xargs"></a>what is the meaning of <code>xargs</code></h5><ol>
 <li>allow a command to act on the output of another command;</li>
 <li>since certain kernels limit the maximum size of an argument array, or some commands might impose even more stringent limits on the number of arguments, <code>xargs</code> can divide the results of <code>ls</code> or <code>find</code> into smaller lists and feed these shorter lists to the second command. This is why it is commonly used with <code>find</code>.</li>
 </ol>
@@ -384,7 +382,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#if-removing%20a%20super%20large%20number%20of%20files"><span class="nav-text">If removing a super large number of files</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#what-is%20the%20meaning%20of%20%60xargs%60"><span class="nav-text">what is the meaning of xargs</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#If-removing-a-super-large-number-of-files"><span class="nav-text">If removing a super large number of files</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#what-is-the-meaning-of-xargs"><span class="nav-text">what is the meaning of xargs</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
@@ -451,20 +449,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

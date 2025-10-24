@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>610 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>605 Words</span>
         </span>
     
     
@@ -194,20 +194,16 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="1-background">1 Background</h4>
-<p>The server with a release version of ubuntu22.04 was upgraded to linux-image-5.15.0-102-generic automatically. However, this version has bugs with mounting drives. For instance, calling <code>df -h</code> would cause</p>
+            <h4 id="1-Background"><a href="#1-Background" class="headerlink" title="1 Background"></a>1 Background</h4><p>The server with a release version of ubuntu22.04 was upgraded to linux-image-5.15.0-102-generic automatically. However, this version has bugs with mounting drives. For instance, calling <code>df -h</code> would cause</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span>: /mnt/share/data: Resource temporarily unavailable</span><br><span class="line">Filesystem                         Size  Used Avail Use% Mounted on</span><br><span class="line">tmpfs                               51G  3.6M   51G   1% /run</span><br><span class="line">/dev/mapper/ubuntu--vg-ubuntu--lv   98G   87G  6.1G  94% /</span><br><span class="line">tmpfs                              252G     0  252G   0% /dev/shm</span><br><span class="line">tmpfs                              5.0M     0  5.0M   0% /run/lock</span><br><span class="line">/dev/sda2                          2.0G  252M  1.6G  14% /boot</span><br><span class="line">/dev/sda1                          1.1G  6.1M  1.1G   1% /boot/efi</span><br><span class="line">tmpfs                               51G  8.0K   51G   1% /run/user/1000</span><br></pre></td></tr></table></figure>
 <p>even though I could still go into the mounted drives through <code>/mnt/share/data</code>. Nevertheless, when running the code to write data on the mounted drives, error like <code>esource temporarily unavailable</code> would also occur.</p>
-<h4 id="2-temporal solution">2 Temporal solution</h4>
-<p>This issue seems to also happen to other users, see <a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/" >here<i class="fas fa-external-link-alt"></i></a>, where they also provided methods to roll back to linux-image-5.15.0-101-generic and avoid the upgrade to linux-image-5.15.0-102-generic.</p>
-<h5 id="21-see the version">2.1 see the version</h5>
-<p>After login through <code>ssh</code>, there would be the running version on the top, like</p>
+<h4 id="2-Temporal-solution"><a href="#2-Temporal-solution" class="headerlink" title="2 Temporal solution"></a>2 Temporal solution</h4><p>This issue seems to also happen to other users, see <a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/" >here<i class="fas fa-external-link-alt"></i></a>, where they also provided methods to roll back to linux-image-5.15.0-101-generic and avoid the upgrade to linux-image-5.15.0-102-generic.</p>
+<h5 id="2-1-see-the-version"><a href="#2-1-see-the-version" class="headerlink" title="2.1 see the version"></a>2.1 see the version</h5><p>After login through <code>ssh</code>, there would be the running version on the top, like</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-102-generic x86_64)</span><br></pre></td></tr></table></figure>
 <p>calling the function to see which version has been on the sever,</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base) sysadmin@quercus:~$ dpkg --list | grep linux-image</span><br><span class="line">ii  linux-image-5.15.0-100-generic         5.15.0-100.110                          amd64        Signed kernel image generic</span><br><span class="line">rc  linux-image-5.15.0-101-generic         5.15.0-101.111                          amd64        Signed kernel image generic</span><br><span class="line">ii  linux-image-5.15.0-102-generic         5.15.0-102.112                          amd64        Signed kernel image generic</span><br></pre></td></tr></table></figure>
 <p>where <code>ii</code> means “It should be installed and it is installed”, and <code>rc</code> means “It’s removed/uninstalled and its configuration files are still there” (<a class="link"   target="_blank" rel="noopener" href="https://askubuntu.com/questions/18804/what-do-the-various-dpkg-flags-like-ii-rc-mean" >ref<i class="fas fa-external-link-alt"></i></a>).</p>
-<h5 id="22-install the 101 and clean the 102">2.2 install the 101 and clean the 102</h5>
-<p>Do them by <code>apt</code></p>
+<h5 id="2-2-install-the-101-and-clean-the-102"><a href="#2-2-install-the-101-and-clean-the-102" class="headerlink" title="2.2 install the 101 and clean the 102"></a>2.2 install the 101 and clean the 102</h5><p>Do them by <code>apt</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image-5.15.0-101-generic linux-headers-5.15.0-101-generic linux-modules-5.15.0-101-generic</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge linux-image-5.15.0-102-generic linux-headers-5.15.0-102-generic linux-modules-5.15.0-102-generic</span><br></pre></td></tr></table></figure>
 <p>and update booting files</p>
@@ -215,8 +211,7 @@
 <p>Attention: if I did not clean <code>linux-modules-5.15.0-102-generic</code>, there would still be 102 in the boot</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(base) sysadmin@quercus:~$ sudo update-grub</span><br><span class="line">Sourcing file `/etc/default/grub<span class="string">&#x27;</span></span><br><span class="line"><span class="string">Sourcing file `/etc/default/grub.d/init-select.cfg&#x27;</span></span><br><span class="line">Generating grub configuration file ...</span><br><span class="line">Found linux image: /boot/vmlinuz-5.15.0-102-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-5.15.0-102-generic</span><br><span class="line">Found linux image: /boot/vmlinuz-5.15.0-101-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-5.15.0-101-generic</span><br><span class="line">Warning: os-prober will not be executed to detect other bootable partitions.</span><br><span class="line">Systems on them will not be added to the GRUB boot configuration.</span><br><span class="line">Check GRUB_DISABLE_OS_PROBER documentation entry.</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>which would make me still enter 102 after rebooting, but I could not actually enter 102 because the linux-image of 102 had been cleaned and therefore system halted.</p>
-<h5 id="23-prevent the 102 as [suggested](https://www.reddit.com/r/ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/)">2.3 prevent the 102 as <a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/" >suggested<i class="fas fa-external-link-alt"></i></a></h5>
-<p>I do not know if this script really is helpful.</p>
+<h5 id="2-3-prevent-the-102-as-suggested"><a href="#2-3-prevent-the-102-as-suggested" class="headerlink" title="2.3 prevent the 102 as suggested"></a>2.3 prevent the 102 as <a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/" >suggested<i class="fas fa-external-link-alt"></i></a></h5><p>I do not know if this script really is helpful.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/preferences.d/avoid-5.15.0-102-generic.pref</span><br></pre></td></tr></table></figure>
 <p>in which,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Package: linux-image-5.15.0-102-generic</span><br><span class="line">Pin: version 5.15.0-102*</span><br><span class="line">Pin-Priority: -1</span><br><span class="line"></span><br><span class="line">Package: linux-headers-5.15.0-102-generic</span><br><span class="line">Pin: version 5.15.0-102*</span><br><span class="line">Pin-Priority: -1</span><br><span class="line"></span><br><span class="line">Package: linux-image-unsigned-5.15.0-102-generic</span><br><span class="line">Pin: version 5.15.0-102*</span><br><span class="line">Pin-Priority: -1</span><br></pre></td></tr></table></figure>
@@ -397,7 +392,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-background"><span class="nav-text">1 Background</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-temporal%20solution"><span class="nav-text">2 Temporal solution</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#21-see%20the%20version"><span class="nav-text">2.1 see the version</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#22-install%20the%20101%20and%20clean%20the%20102"><span class="nav-text">2.2 install the 101 and clean the 102</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#23-prevent%20the%20102%20as%20%5Bsuggested%5D(https://www.reddit.com/r/ubuntu/comments/1bzshdt/ubuntu_2204_smb_shares_stopped_working_lastnight/)"><span class="nav-text">2.3 prevent the 102 as suggested</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Background"><span class="nav-text">1 Background</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Temporal-solution"><span class="nav-text">2 Temporal solution</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-see-the-version"><span class="nav-text">2.1 see the version</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-install-the-101-and-clean-the-102"><span class="nav-text">2.2 install the 101 and clean the 102</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-prevent-the-102-as-suggested"><span class="nav-text">2.3 prevent the 102 as suggested</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
@@ -464,20 +459,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

@@ -195,10 +195,8 @@
 
         <div class="article-content markdown-body">
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory</span><br></pre></td></tr></table></figure>
-<h4 id="what-is locale?">What is locale?</h4>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables" >https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables<i class="fas fa-external-link-alt"></i></a></p>
-<h4 id="how-to mange it well?">How to mange it well?</h4>
-<p>Probably install locales before</p>
+<h4 id="What-is-locale"><a href="#What-is-locale" class="headerlink" title="What is locale?"></a>What is locale?</h4><p><a class="link"   target="_blank" rel="noopener" href="https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables" >https://www.ibm.com/docs/en/aix/7.1?topic=locales-understanding-locale-environment-variables<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="How-to-mange-it-well"><a href="#How-to-mange-it-well" class="headerlink" title="How to mange it well?"></a>How to mange it well?</h4><p>Probably install locales before</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install locales</span><br></pre></td></tr></table></figure>
 <p>following <a class="link"   target="_blank" rel="noopener" href="https://gist.github.com/nicks9188/a19f39d62780055a68c22b89a9799c25?permalink_comment_id=4191284" >https://gist.github.com/nicks9188/a19f39d62780055a68c22b89a9799c25?permalink_comment_id=4191284<i class="fas fa-external-link-alt"></i></a>, <code>vi /etc/environment</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.utf-8</span><br><span class="line">LC_ALL=en_US.utf-8</span><br></pre></td></tr></table></figure>
@@ -381,7 +379,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is%20locale?"><span class="nav-text">What is locale?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-to%20mange%20it%20well?"><span class="nav-text">How to mange it well?</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-locale"><span class="nav-text">What is locale?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-mange-it-well"><span class="nav-text">How to mange it well?</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -448,20 +446,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

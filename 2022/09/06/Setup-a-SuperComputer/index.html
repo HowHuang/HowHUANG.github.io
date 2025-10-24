@@ -173,7 +173,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>576 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>571 Words</span>
         </span>
     
     
@@ -195,8 +195,7 @@
 
         <div class="article-content markdown-body">
             <p>This is a Centos7 machine</p>
-<h4 id="1-install icc ifort">1 Install icc ifort</h4>
-<p>It is quite easy for a root user</p>
+<h4 id="1-Install-icc-ifort"><a href="#1-Install-icc-ifort" class="headerlink" title="1 Install icc ifort"></a>1 Install icc ifort</h4><p>It is quite easy for a root user</p>
 <p>I chose <strong>Intel® oneAPI HPC Toolkit</strong> (<a class="link"   target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html#gs.bec8rv" >https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html#gs.bec8rv<i class="fas fa-external-link-alt"></i></a>)</p>
 <p><img src="fig1.png" alt=""></p>
 <p>Then just follow the installation instructions</p>
@@ -208,31 +207,25 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base) [root@LiuJGLab ~]<span class="comment"># cd /opt/intel/oneapi/</span></span><br><span class="line">(base) [root@LiuJGLab oneapi]<span class="comment"># source setvars.sh intel64</span></span><br><span class="line">[root@LiuJGLab oneapi]<span class="comment"># which ifort</span></span><br><span class="line">/opt/intel/oneapi/compiler/2022.1.0/linux/bin/intel64/ifort</span><br></pre></td></tr></table></figure>
 <p>Add it to profile will load compiler duing every login, so I add a reminder in /etc/profile</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[43;34mintel编译器(intel-hpckit version)已经安装在/opt/intel/oneapi/，\033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[43;34m如需使用，运行source /opt/intel/oneapi/setvars.sh intel64\033[0m&quot;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-use upgraded version of gfortran">2 Use upgraded version of gfortran</h4>
-<p>see <a class="link"   target="_blank" rel="noopener" href="https://forums.centos.org/viewtopic.php?t=68954" >https://forums.centos.org/viewtopic.php?t=68954<i class="fas fa-external-link-alt"></i></a>, we need to install Devtoolset, which will not do replace system packages but provide packages through a bash shell:</p>
+<h4 id="2-Use-upgraded-version-of-gfortran"><a href="#2-Use-upgraded-version-of-gfortran" class="headerlink" title="2 Use upgraded version of gfortran"></a>2 Use upgraded version of gfortran</h4><p> see <a class="link"   target="_blank" rel="noopener" href="https://forums.centos.org/viewtopic.php?t=68954" >https://forums.centos.org/viewtopic.php?t=68954<i class="fas fa-external-link-alt"></i></a>, we need to install Devtoolset, which will not do replace system packages but provide packages through a bash shell:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)</span><br><span class="line">Copyright (C) 2015 Free Software Foundation, Inc.</span><br><span class="line">$ scl <span class="built_in">enable</span> devtoolset-7 bash</span><br><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 7.3.1 20180303 (Red Hat 7.3.1-5)</span><br><span class="line">Copyright (C) 2017 Free Software Foundation, Inc.</span><br><span class="line">$ <span class="comment"># compile in this shell</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">$ gfortran --version | <span class="built_in">head</span> -2</span><br><span class="line">GNU Fortran (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)</span><br><span class="line">Copyright (C) 2015 Free Software Foundation, Inc.</span><br></pre></td></tr></table></figure>
 <p>version 10 was also installed</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scl <span class="built_in">enable</span> devtoolset-10 bash</span><br></pre></td></tr></table></figure>
-<h4 id="3-install anaconda">3 Install anaconda</h4>
-<p>When installation, specify the path to <code>/opt/anaconda3</code> (for root to install, the path is <code>/root/anaconda3</code> by default)</p>
+<h4 id="3-Install-anaconda"><a href="#3-Install-anaconda" class="headerlink" title="3 Install anaconda"></a>3 Install anaconda</h4><p>When installation, specify the path to <code>/opt/anaconda3</code> (for root to install, the path is <code>/root/anaconda3</code> by default)</p>
 <p>A new user to activate anaconda bash should run</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/anaconda3/bin/conda init bash</span><br></pre></td></tr></table></figure>
-<h4 id="4-visulization of basic command (via progress)">4 Visulization of basic command (via progress)</h4>
-<p>After installing progress, just like</p>
+<h4 id="4-Visulization-of-basic-command-via-progress"><a href="#4-Visulization-of-basic-command-via-progress" class="headerlink" title="4 Visulization of basic command (via progress)"></a>4 Visulization of basic command (via progress)</h4><p>After installing progress, just like</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> bigfile newfile &amp; progress -mp $!</span><br></pre></td></tr></table></figure>
 <p>$! means the last running process’s PID by shell in the background</p>
 <p>Notice that some command has already the option for visulizing the progress, like</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dv *.gz</span><br></pre></td></tr></table></figure>
-<h4 id="5-login through ssh might be slow">5 Login through ssh might be slow</h4>
-<p>This method might be specific for Centos, we followed this method to solve it (<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/ssh-slow.html" >https://www.runoob.com/w3cnote/ssh-slow.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<h4 id="6-install git">6 Install git</h4>
-<p>check the processor belonging to 32-bit or 64-bit</p>
+<h4 id="5-Login-through-ssh-might-be-slow"><a href="#5-Login-through-ssh-might-be-slow" class="headerlink" title="5 Login through ssh might be slow"></a>5 Login through ssh might be slow</h4><p>This method might be specific for Centos, we followed this method to solve it (<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/ssh-slow.html" >https://www.runoob.com/w3cnote/ssh-slow.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<h4 id="6-Install-git"><a href="#6-Install-git" class="headerlink" title="6 Install git"></a>6 Install git</h4><p>check the processor belonging to 32-bit or 64-bit</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file /bin/ls</span><br></pre></td></tr></table></figure>
 <p>get EPEL and then install git</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## for 64-bit</span></span><br><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line"><span class="comment">## for 32-bit</span></span><br><span class="line">get http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
-<h4 id="7-mount">7 Mount</h4>
-<p>install necessary filesystems-supported software</p>
+<h4 id="7-Mount"><a href="#7-Mount" class="headerlink" title="7 Mount"></a>7 Mount</h4><p>install necessary filesystems-supported software</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nfs-common</span><br></pre></td></tr></table></figure>
 <p>use command to mount or modifty <code>/etc/fstab</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t nfs xx.xx.xx.xx:/volume1/data /portal3</span><br></pre></td></tr></table></figure>
@@ -413,7 +406,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-install%20icc%20ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-use%20upgraded%20version%20of%20gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-install%20anaconda"><span class="nav-text">3 Install anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-visulization%20of%20basic%20command%20(via%20progress)"><span class="nav-text">4 Visulization of basic command (via progress)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-login%20through%20ssh%20might%20be%20slow"><span class="nav-text">5 Login through ssh might be slow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-install%20git"><span class="nav-text">6 Install git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-mount"><span class="nav-text">7 Mount</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Install-icc-ifort"><span class="nav-text">1 Install icc ifort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Use-upgraded-version-of-gfortran"><span class="nav-text">2 Use upgraded version of gfortran</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Install-anaconda"><span class="nav-text">3 Install anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Visulization-of-basic-command-via-progress"><span class="nav-text">4 Visulization of basic command (via progress)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Login-through-ssh-might-be-slow"><span class="nav-text">5 Login through ssh might be slow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Install-git"><span class="nav-text">6 Install git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Mount"><span class="nav-text">7 Mount</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -480,20 +473,5 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
